@@ -35,7 +35,7 @@ export default function Home() {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Hi hello from</title>
+        <title>Holla hello from</title>
       </Helmet>
       <nav className="navbar navbar-expand-sm bg-light navbar-light">
         <NavLink exact to="/" activeClassName="active" className="nav-link">
