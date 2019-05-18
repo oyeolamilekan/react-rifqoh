@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import React, { useState } from "react";
 
-import { Helmet } from "react-helmet";
 import img1 from "../imgs/img1.png";
 import img2 from "../imgs/img2.png";
 import img3 from "../imgs/img3.png";
@@ -33,10 +32,7 @@ export default function Home() {
 
   return (
     <div>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Holla hello from</title>
-      </Helmet>
+      
       <nav className="navbar navbar-expand-sm bg-light navbar-light">
         <NavLink exact to="/" activeClassName="active" className="nav-link">
           <img src={strip} alt="logo" className="logo" />
