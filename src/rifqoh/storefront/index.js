@@ -21,7 +21,6 @@ export default class Index extends Component {
 
   componentDidMount() {
     const { slug } = this.props.match.params;
-    document.title = "loppg"
     axios.get(`${url}/api/shop_info/${slug}/`).then(res => {
       const { shop_name, tags, logo } = res.data.shop_info;
       this.setState({

@@ -11,11 +11,12 @@ class ShopNav extends Component {
   };
   render() {
     const { shop, tags, logo } = this.props;
+    const slug = localStorage.getItem('shopSlug');
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-white">
           <Link
-            to={`/${shop}/store/index`}
+            to={`/${slug}/store/index`}
             className="navbar-brand"
             onClick={clicker}
           >
