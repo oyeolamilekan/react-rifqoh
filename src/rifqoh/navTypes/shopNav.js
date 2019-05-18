@@ -10,8 +10,7 @@ class ShopNav extends Component {
     return this.props.location.pathname.indexOf(path) > 0 ? "active" : "";
   };
   render() {
-    const { shop, tags, logo } = this.props;
-    const slug = localStorage.getItem('shopSlug');
+    const { shop, tags, logo, slug } = this.props;
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-white">

@@ -22,7 +22,7 @@ export default class Index extends Component {
   componentDidMount() {
     const { slug } = this.props.match.params;
     axios.get(`${url}/api/shop_info/${slug}/`).then(res => {
-      const { shop_name, tags, logo } = res.data.shop_info;
+      const { shop_name, tags, logo, shop_slug } = res.data.shop_info;
       this.setState({
         shop: shop_name,
         logo: logo,
@@ -108,7 +108,7 @@ export default class Index extends Component {
       <div>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>{slug} store</title>
+          <title>{shop} store</title>
         </Helmet>
         {isLoading ? (
           <div className="mt-5 text-center">
@@ -120,6 +120,7 @@ export default class Index extends Component {
               shop={shop}
               logo={logo}
               tags={tagsArray}
+              slug={slug}
               getProducts={this.getProducts}
             />
             {products.length > 0 ? (
