@@ -17,6 +17,7 @@ class CommerceNav extends Component {
   render() {
     const username = localStorage.getItem("username");
     const logo = localStorage.getItem("logo");
+    const slug = localStorage.getItem("shopSlug");
     const { name: shopName } = this.props;
     const slugName = shopName.toLowerCase();
     return (
@@ -88,7 +89,7 @@ class CommerceNav extends Component {
                   </button>
                   <div className="dropdown-menu dropdown-menu-right">
                     <Link
-                      to={`/${slugName}/store/index/`}
+                      to={`/${slug}/store/index/`}
                       className="dropdown-item"
                       target="_blank"
                     >

@@ -53,13 +53,14 @@ class Login extends Component {
       })
       .then(res => {
         console.log(res.data);
-        const { token, name, is_commerce, is_admin, shop_name, shop_logo } = res.data;
+        const { token, name, is_commerce, is_admin, shop_name, shop_logo, shop_slug } = res.data;
         const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
         localStorage.setItem("username", name);
         localStorage.setItem("is_commerce", is_commerce);
         localStorage.setItem("is_admin", is_admin);
         localStorage.setItem("token", token);
         localStorage.setItem("logo", shop_logo);
+        localStorage.setItem("shopSlug", shop_slug);
         localStorage.setItem("shopName", shop_name);
         localStorage.setItem("expirationDate", expirationDate);
         shop_name.length > 0
