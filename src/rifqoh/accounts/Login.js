@@ -106,13 +106,13 @@ class Login extends Component {
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input
-                  type="text"
+                  type="email"
                   className="form-control"
                   id="InputUsername"
                   aria-describedby="helpUsername"
                   placeholder="Username"
                   onChange={this.handleChange}
-                  name="username"
+                  name="Email"
                   required
                 />
               </div>

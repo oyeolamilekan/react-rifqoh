@@ -132,7 +132,7 @@ class SignUp extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  id="InputEmail"
+                  id="InputName"
                   aria-describedby="emailHelp"
                   placeholder="Enter Name"
                   name="name"
