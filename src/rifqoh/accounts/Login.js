@@ -78,8 +78,8 @@ class Login extends Component {
   render() {
     const { loading, error } = this.state;
     return (
-      <div className="col-md-4 offset-md-4">
-        <div className="bg-white shadow rounded h-50 login mt-10">
+      <div className="col-md-4 offset-md-4 middle-belt">
+        <div className="bg-white shadow rounded h-50 login">
           <div className="login-container p-3">
             <div className="img-container text-center">
               <img src={strip} className="reg-img" alt="logo" />

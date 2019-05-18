@@ -102,8 +102,8 @@ class SignUp extends Component {
     const { loading, errorMessage, error } = this.state;
     const { is_commerce } = this.props.location;
     return (
-      <div className="col-md-4 offset-md-4">
-        <div className="bg-white shadow rounded login mt-10">
+      <div className="col-md-4 offset-md-4 middle-belt">
+        <div className="bg-white shadow rounded login">
           <div className="img-container text-center p-3">
             <img src={strip} className="reg-img" alt="logo" />
           </div>

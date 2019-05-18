@@ -4,7 +4,7 @@
  * This source code is free
  */
 
-import Nav from "../navTypes/nav";
+import Nav from "../navTypes/commerceNav";
 import React from "react";
 
 const Logout = () => (

@@ -6,6 +6,7 @@
 
 import { Route, Switch } from "react-router-dom";
 
+import ChangePassword from "../accounts/ChangePassword";
 import EditInfo from "../commerce/EditInfo";
 import GamingIndex from "../shop/gaming";
 import Home from "../admin/Home";
@@ -25,12 +26,9 @@ import Trending from "../trending/trending";
 import Trending_g from "../trending/trending_g";
 import Trending_l from "../trending/trending_l";
 import Trending_p from "../trending/trending_p";
-import UserIndex from "../accounts/user_products";
-import accountTypes from "../accounts/accountTypes";
 import cProducts from "../commerce/cProducts";
 import createShop from "../commerce/createStore";
 import gamingProducts from "../home/gamingProducts";
-import genreList from "../accounts/genreChoice";
 import laptopsProducts from "../home/laptopsProducts";
 import phoneProducts from "../home/phoneProducts";
 import tagsProduct from "../commerce/tagsProduct";
@@ -48,12 +46,10 @@ const Main = () => (
       <Route path="/trending_g" component={Trending_g} />
       <Route path="/results" component={Results} />
       <Route path="/shop" component={Shop} />
-      <Route path="/user_products" component={UserIndex} />
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/accounts" component={accountTypes} />
-      <Route path="/pick" component={genreList} />
+      <Route path="/change_password" component={ChangePassword} />
       <Route path="/:slug/all" component={ShopIndex} />
       <Route path="/:slug/laptops" component={LaptopIndex} />
       <Route path="/:slug/gaming" component={GamingIndex} />

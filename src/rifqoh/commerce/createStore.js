@@ -64,8 +64,8 @@ class createShop extends Component {
   render() {
     const { is_exist } = this.state;
     return (
-      <div className="col-md-4 offset-md-4">
-        <div className="container mt-4 bg-white p-4 shadow rounded">
+      <div className="col-md-4 offset-md-4 middle-belt">
+        <div className="container bg-white p-4 shadow rounded">
           <div className="img-container text-center mb-3">
             <img src={strip} className="reg-img" alt="logo" />
           </div>

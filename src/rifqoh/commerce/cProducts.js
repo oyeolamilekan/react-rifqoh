@@ -126,7 +126,6 @@ class cProducts extends Component {
   };
 
   render() {
-    const shopName = localStorage.getItem("shopName");
     const {
       productList,
       isNext,
@@ -138,7 +137,7 @@ class cProducts extends Component {
     } = this.state;
     return (
       <div>
-        <Nav name={shopName} />
+        <Nav />
         <div className="pl-3 pr-3">
           <div>
             <div className="p-3 shadow mt-2 bg-white rounded mb-4 table-responsive">

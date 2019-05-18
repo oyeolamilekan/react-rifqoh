@@ -11,15 +11,14 @@ class CommerceNav extends Component {
   logout = event => {
     event.preventDefault();
     localStorage.clear();
-    this.props.history.push("/logout");
+    this.props.history.push("/");
   };
 
   render() {
     const username = localStorage.getItem("username");
     const logo = localStorage.getItem("logo");
     const slug = localStorage.getItem("shopSlug");
-    const { name: shopName } = this.props;
-    const slugName = shopName.toLowerCase();
+    const shopName = localStorage.getItem("shopName");
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-white">
@@ -96,11 +95,17 @@ class CommerceNav extends Component {
                       GO TO STORE
                     </Link>
                     <Link
-                      to='/logout'
+                      to='/'
                       onClick={this.logout}
                       className="dropdown-item" 
                     >
                       Log out
+                    </Link>
+                    <Link
+                      to='/change_password'
+                      className="dropdown-item" 
+                    >
+                      Change Password
                     </Link>
                   </div>
                 </div>
