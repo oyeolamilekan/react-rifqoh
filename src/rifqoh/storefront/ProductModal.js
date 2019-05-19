@@ -34,7 +34,7 @@ export default class ProductModal extends Component {
     const { productName, description, productImage } = this.state;
     return (
       <div className="text-center">
-        <img src={productImage} className="img-fluid" />
+        <img src={productImage} className="img-fluid" alt={productName} />
         <h3>{productName}</h3>
         <p>{description}</p>
         <span className="btn btn-success btn-block">Contact whatsapp</span>

@@ -22,7 +22,7 @@ export default class Index extends Component {
   componentDidMount() {
     const { slug } = this.props.match.params;
     axios.get(`${url}/api/shop_info/${slug}/`).then(res => {
-      const { shop_name, tags, logo, shop_slug } = res.data.shop_info;
+      const { shop_name, tags, logo } = res.data.shop_info;
       this.setState({
         shop: shop_name,
         logo: logo,
