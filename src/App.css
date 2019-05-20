@@ -460,3 +460,11 @@ a.float:hover {
 .middle-belt {
   top: 15vh;
 }
+
+.middle-belt-35 {
+  top: 35vh;
+}
+
+.position-relative{
+  position: relative;
+}

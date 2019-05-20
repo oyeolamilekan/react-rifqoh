@@ -21,17 +21,20 @@ export default class Index extends Component {
 
   componentDidMount() {
     const { slug } = this.props.match.params;
-    axios.get(`${url}/api/shop_info/${slug}/`).then(res => {
-      const { shop_name, tags, logo } = res.data.shop_info;
-      this.setState({
-        shop: shop_name,
-        logo: logo,
-        tagsArray: tags,
-        isLoading: false
-      });
-    });
+    axios
+      .get(`${url}/api/shop_info/${slug}/`)
+      .then(res => {
+        const { shop_name, tags, logo } = res.data.shop_info;
+        this.setState({
+          shop: shop_name,
+          logo: logo,
+          tagsArray: tags,
+          isLoading: false
+        });
+      })
+      .catch(() => this.props.history.push("/404"));
     this.getProducts();
-
+    
     document.addEventListener("scroll", this.trackScrolling);
   }
 
