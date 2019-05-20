@@ -116,7 +116,7 @@ class createShop extends Component {
                 required
               >
                 <option value="" disabled selected>
-                  What are you into.
+                  What are you into?
                 </option>
                 <option>Fashion</option>
                 <option>Automobile</option>
@@ -131,7 +131,11 @@ class createShop extends Component {
                   isLoading ? "disabled" : ""
                 }`}
               >
-                {isLoading ? <Loading /> : "Create Store"}
+                {isLoading ? (
+                  <Loading color={"white"} sizeUnit={"px"} size={13} />
+                ) : (
+                  "Create Store"
+                )}{" "}
               </button>
             </div>
             <div className="mt-4" />
