@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import Loading from "react-spinners/BeatLoader";
 import Token from "../utils";
 import axios from "axios";
 import strip from "../strip.png";
@@ -8,7 +9,9 @@ import url from "../url";
 class createShop extends Component {
   state = {
     shopName: "",
-    is_exist: false
+    shopCatergory: "",
+    is_exist: false,
+    isLoading: false
   };
 
   // Handle text typed in by the user.
@@ -29,12 +32,16 @@ class createShop extends Component {
   // Submit the request
   handleSubmit = event => {
     event.preventDefault();
-    const { shopName } = this.state;
+    this.setState({
+      isLoading: true
+    });
+    const { shopName, shopCategory } = this.state;
     axios
       .post(
         `${url}/api/create_shop/`,
         {
-          shopName: shopName
+          shopName: shopName,
+          shopCategory: shopCategory
         },
         {
           headers: {
@@ -47,22 +54,24 @@ class createShop extends Component {
         const { is_exist } = res.data;
         if (is_exist) {
           this.setState({
-            is_exist: true
+            is_exist: true,
+            isLoading: false
           });
         } else {
           localStorage.setItem("shopName", shopName);
-          localStorage.setItem("shopSlug", res.data.slug)
+          localStorage.setItem("shopSlug", res.data.slug);
           this.props.history.push("/admin/tags");
         }
       })
       .catch(err => {
         this.setState({
-          is_exist: true
+          is_exist: true,
+          isLoading: false
         });
       });
   };
   render() {
-    const { is_exist } = this.state;
+    const { is_exist, isLoading } = this.state;
     return (
       <div className="col-md-4 offset-md-4 middle-belt">
         <div className="container bg-white p-4 shadow rounded">
@@ -99,12 +108,30 @@ class createShop extends Component {
                 required={true}
               />
             </div>
+            <div className="form-group">
+              <select
+                className="form-control"
+                onChange={this.handleChange}
+                name="shopCategory"
+                required
+              >
+                <option value="" disabled selected>
+                  What are you into.
+                </option>
+                <option>Fashion</option>
+                <option>Automobile</option>
+                <option>Electronics & Gadgets</option>
+              </select>
+            </div>
+
             <div className="btn-submit mt-3">
               <button
                 type="submit"
-                className="btn btn-block p-2 btn-dark text-white h6"
+                className={`btn btn-block p-2 btn-dark text-white h6 btn-lg shadow ${
+                  isLoading ? "disabled" : ""
+                }`}
               >
-                Create Store
+                {isLoading ? <Loading /> : "Create Store"}
               </button>
             </div>
             <div className="mt-4" />
