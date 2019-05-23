@@ -18,7 +18,8 @@ export default class tagsProduct extends Component {
     shop_category: [],
     categoryName: "",
     loading: true,
-    sent: false
+    sent: false,
+    error: false
   };
 
   componentDidMount() {
@@ -30,14 +31,15 @@ export default class tagsProduct extends Component {
         }
       })
       .then(res => {
+        console.log(res.data.shop_categories);
         this.setState({
           shop_category: res.data.shop_categories,
           loading: false
         });
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
-          is_exist: true
+          error: true
         });
       });
   }
@@ -68,19 +70,28 @@ export default class tagsProduct extends Component {
           loading: false,
           sent: true
         });
+      })
+      .catch(() => {
+        console.log('kii')
+        this.setState({
+          sent: false,
+          error: true,
+          loading: false
+        });
       });
   };
 
   handleDismiss = event => {
     event.preventDefault();
     this.setState({
-      sent: false
+      sent: false,
+      error: false
     });
   };
 
   render() {
     const shopName = localStorage.getItem("shopName");
-    const { shop_category, loading, sent } = this.state;
+    const { shop_category, loading, sent, categoryName, error } = this.state;
     return (
       <div>
         <Nav name={shopName} />
@@ -131,10 +142,24 @@ export default class tagsProduct extends Component {
                     <div className="text-center">Loading..</div>
                   ) : sent ? (
                     <div
-                      class="alert alert-success alert-dismissible fade show"
+                      className="alert alert-success alert-dismissible fade show"
                       role="alert"
                     >
                       <strong>Successful</strong> the tag has been created.
+                      <button
+                        type="button"
+                        className="close"
+                        onClick={this.handleDismiss}
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  ) : error ? (
+                    <div
+                      className="alert alert-danger alert-dismissible fade show"
+                      role="alert"
+                    >
+                      <strong>Failed</strong> something bad happend.
                       <button
                         type="button"
                         className="close"
@@ -157,6 +182,7 @@ export default class tagsProduct extends Component {
                       placeholder="Create a category."
                       onChange={this.handleChange}
                       name="categoryName"
+                      value={categoryName}
                       required
                     />
                   </div>

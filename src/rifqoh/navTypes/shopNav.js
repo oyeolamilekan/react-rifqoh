@@ -4,7 +4,6 @@ import MiniNavigation from "../home/mininav";
 import { NavLink } from "react-router-dom";
 import Progress from "react-progress-2";
 import Search from "../search";
-import {jsUcfirst} from '../utils';
 import { withRouter } from "react-router";
 
 class ShopNav extends Component {

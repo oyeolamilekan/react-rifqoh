@@ -37,7 +37,7 @@ export default class ProductModal extends Component {
         <img src={productImage} className="img-fluid" alt={productName} />
         <h3>{productName}</h3>
         <p>{description}</p>
-        <span className="btn btn-success btn-block">Contact whatsapp</span>
+        {/* <span className="btn btn-success btn-block">Contact whatsapp</span> */}
       </div>
     );
   }
