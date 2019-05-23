@@ -15,15 +15,10 @@ export default class tagsProduct extends Component {
    * sent -> {TYPE: bool} -> Shows sent status when the user has successfully saved the info
    */
   state = {
-    tagsArray: [],
-    chossenTags: [],
-    parentArray: [],
-    title: "",
+    shop_category: [],
+    categoryName: "",
     loading: true,
-    childLoaded: false,
-    backButton: false,
-    sent: false,
-    titleTag: ""
+    sent: false
   };
 
   componentDidMount() {
@@ -36,10 +31,7 @@ export default class tagsProduct extends Component {
       })
       .then(res => {
         this.setState({
-          chossenTags: res.data.choosen_catergory
-            ? res.data.choosen_catergory
-            : [],
-          parentArray: res.data.catergory_serializer,
+          shop_category: res.data.shop_categories,
           loading: false
         });
       })
@@ -50,35 +42,18 @@ export default class tagsProduct extends Component {
       });
   }
 
-  // Open the childs card
-  chossenParentTags = (e, data) => {
-    e.preventDefault();
+  handleChange = event => {
     this.setState({
-      childLoaded: true,
-      tagsArray: data.tags,
-      titleTag: data.title,
-      backButton: true
+      [event.target.name]: event.target.value
     });
   };
 
-  // Open the back button
-  backButtonClicked = e => {
-    e.preventDefault();
-    this.setState({
-      childLoaded: false,
-      backButton: false,
-      titleTag: ""
-    });
-  };
-
-  submitTag = e => {
-    e.preventDefault();
-    const { chossenTags } = this.state;
-    this.setState({
-      loading: true
-    });
+  handleSubmit = event => {
+    event.preventDefault();
+    const { categoryName } = this.state;
+    const data = { categoryName };
     axios
-      .post(`${url}/api/create_tags/`, chossenTags, {
+      .post(`${url}/api/create_tags/`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${Token()}`
@@ -86,41 +61,14 @@ export default class tagsProduct extends Component {
       })
       .then(res => {
         this.setState({
-          sent: true,
-          loading: false
+          shop_category: [...this.state.shop_category, res.data]
         });
       });
   };
 
-  buttonPicker = (e, tags) => {
-    e.preventDefault();
-    const { chossenTags } = this.state;
-    if (chossenTags.includes(tags)) {
-      let newChossen = chossenTags.filter(e => {
-        return e !== tags;
-      });
-      this.setState({
-        chossenTags: newChossen
-      });
-    } else {
-      this.setState({
-        chossenTags: [...this.state.chossenTags, tags]
-      });
-    }
-  };
-
   render() {
     const shopName = localStorage.getItem("shopName");
-    const {
-      tagsArray,
-      chossenTags,
-      loading,
-      sent,
-      parentArray,
-      childLoaded,
-      backButton,
-      titleTag
-    } = this.state;
+    const { shop_category, loading, sent } = this.state;
     return (
       <div>
         <Nav name={shopName} />
@@ -130,16 +78,16 @@ export default class tagsProduct extends Component {
               <div className="text-center">
                 <Loading />
               </div>
-            ) : chossenTags.length > 0 ? (
+            ) : shop_category.length > 0 ? (
               <div className="text-center">
                 <div className="tags">
-                  {chossenTags.map((tags, index) => {
+                  {shop_category.map((tags, index) => {
                     return (
                       <span
                         className="bg-tags p-1 text-white rounded mr-2"
                         key={index}
                       >
-                        {jsUcfirst(tags)}
+                        {jsUcfirst(tags.name)}
                       </span>
                     );
                   })}
@@ -159,7 +107,6 @@ export default class tagsProduct extends Component {
             <div className="modal-content">
               {/* <!-- Modal Header --> */}
               <div className="modal-header">
-                <h4 className="modal-title">{titleTag? titleTag: 'Add Tags'}</h4>
                 <button type="button" className="close" data-dismiss="modal">
                   &times;
                 </button>
@@ -167,7 +114,7 @@ export default class tagsProduct extends Component {
 
               {/* <!-- Modal body --> */}
               <div className="modal-body">
-                <div className="mb-4">
+                <div className="mb-3">
                   {loading ? (
                     <div className="text-center">Loading..</div>
                   ) : sent ? (
@@ -176,71 +123,23 @@ export default class tagsProduct extends Component {
                     ""
                   )}
                 </div>
-
-                {/* Check if the child button is clicked */}
-                {childLoaded
-                  ? tagsArray.map((tags, index) => {
-                      return (
-                        <span
-                          className={`p-2 border ml-1 tags-pointer pointer ${
-                            chossenTags.includes(tags)
-                              ? "bg-success text-white"
-                              : ""
-                          }`}
-                          onClick={e => this.buttonPicker(e, tags)}
-                          key={index}
-                        >
-                          {tags}
-                        </span>
-                      );
-                    })
-                  : parentArray.map((tags, index) => {
-                      return (
-                        <span
-                          className="p-2 border ml-1 pointer"
-                          onClick={e => this.chossenParentTags(e, tags)}
-                          key={index}
-                        >
-                          {tags.title}
-                        </span>
-                      );
-                    })}
-                {/* End button */}
-              </div>
-
-              {/* <!-- Modal footer --> */}
-              <div className="modal-footer">
-                {childLoaded ? (
-                  <div>
-                    <button
-                      type="button"
-                      className="btn btn-danger btn-sm mr-1"
-                      data-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-dark btn-sm mr-1"
-                      onClick={this.submitTag}
-                    >
-                      Save
-                    </button>
-                    {backButton ? (
-                      <span
-                        onClick={this.backButtonClicked}
-                        className="btn btn-white btn-sm border"
-                      >
-                        <i className="uil uil-angle-left" />
-                        Back
-                      </span>
-                    ) : (
-                      ""
-                    )}
+                <form onSubmit={this.handleSubmit}>
+                  <div className="form-group mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      placeholder="Create a category."
+                      onChange={this.handleChange}
+                      name="categoryName"
+                      required
+                    />
                   </div>
-                ) : (
-                  ""
-                )}
+                  <button className="btn btn-dark btn-block btn-lg">
+                    Sumbit.
+                  </button>
+                </form>
               </div>
             </div>
           </div>

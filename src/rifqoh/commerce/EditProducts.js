@@ -11,8 +11,8 @@ export default class EditProducts extends Component {
     productPrice: "",
     description: "",
     productId: "",
-    chossenTags: [],
-    tags: "",
+    shop_category: [],
+    tags: {},
     file: "",
     fileName: "",
     loading: false,
@@ -34,9 +34,7 @@ export default class EditProducts extends Component {
       })
       .then(res => {
         this.setState({
-          chossenTags: res.data.choosen_catergory
-            ? res.data.choosen_catergory
-            : [],
+          shop_category: res.data.shop_categories,
           productName: this.props.product.name,
           productPrice: this.props.product.price,
           description: this.props.product.description,
@@ -54,6 +52,7 @@ export default class EditProducts extends Component {
 
   componentDidUpdate(prevProps) {
     const { product } = this.props;
+    console.log(product);
     if (prevProps.product !== product) {
       this.setState({
         productName: product.name,
@@ -116,9 +115,8 @@ export default class EditProducts extends Component {
     data.append("productName", productName);
     data.append("productPrice", productPrice);
     data.append("description", description);
-    data.append("tags", tags);
+    data.append("tags", typeof(tags) !== 'string' ? JSON.stringify(tags) : tags);
     data.append("id", productId);
-
     // Send a post request to the server with
     // needed information
     axios
@@ -130,7 +128,6 @@ export default class EditProducts extends Component {
       })
       .then(res => {
         this.props.editProductData(res.data.product);
-        document.forms[0].reset();
         this.setState({
           sent: true
         });
@@ -144,7 +141,7 @@ export default class EditProducts extends Component {
   };
   render() {
     const {
-      chossenTags,
+      shop_category,
       productPrice,
       description,
       productName,
@@ -170,7 +167,7 @@ export default class EditProducts extends Component {
           <div className="text-center">Loading...</div>
         ) : (
           <form onSubmit={this.handleSubmit}>
-            <div classNam2e="form-group">
+            <div className="form-group">
               <label htmlFor="exampleInputEmail1">Product name</label>
               <input
                 type="text"
@@ -210,11 +207,16 @@ export default class EditProducts extends Component {
                 onChange={this.handleChange}
                 name="tags"
                 value={tags}
+                required
               >
-                <option defaultValue>{this.props.product.genre}</option>
-                {chossenTags.map((e, key) => {
-                  return e !== this.props.product.genre ? (
-                    <option key={key}>{e}</option>
+                <option defaultValue={tags}>
+                  {tags.name}
+                </option>
+                {shop_category.map((e, key) => {
+                  return e.name !== this.props.product.genre.name ? (
+                    <option key={key} value={JSON.stringify(e)}>
+                      {e.name}
+                    </option>
                   ) : (
                     ""
                   );

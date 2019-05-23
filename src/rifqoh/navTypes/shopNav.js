@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 
+import MiniNavigation from "../home/mininav";
 import { NavLink } from "react-router-dom";
 import Progress from "react-progress-2";
 import Search from "../search";
+import {jsUcfirst} from '../utils';
 import { withRouter } from "react-router";
 
 class ShopNav extends Component {
   getNavLinkClass = path => {
     return this.props.location.pathname.indexOf(path) > 0 ? "active" : "";
   };
+  getResults = results => {
+    this.props.getResults(results);
+  }
   render() {
-    const { shop, logo, slug } = this.props;
+    const { shop, logo, tags, slug, shop_slug } = this.props;
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-white">
@@ -22,11 +27,11 @@ class ShopNav extends Component {
             {logo ? (
               <img src={logo} alt="logo" className="logo" />
             ) : (
-              <div style={{ marginLeft: -10 }}> {shop.substring(0, 1)}</div>
+              <div style={{ marginLeft: -10 }}> <b>{shop.substring(0, 1)}</b></div>
             )}
           </NavLink>
-          <div className="specialBar">
-            <Search />
+          <div className="specialBar mr-1">
+            <Search shop_slug={shop_slug} getResults={this.getResults}/>
           </div>
           <button
             className="navbar-toggler"
@@ -62,42 +67,18 @@ class ShopNav extends Component {
                 data-toggle="collapse"
                 data-target=".navbar-collapse.show"
               >
-                <NavLink
-                  exact
-                  to="/trending"
-                  activeClassName="active"
-                  className="nav-link"
-                >
-                  <i className="uil uil-arrow-growth" />
-                  Trending
-                </NavLink>
+                <div className="mr-auto d-none d-lg-block d-xl-block">
+                  <Search shop_slug={shop_slug} getResults={this.getResults}/>
+                </div>
               </li>
             </ul>
           </div>
           
-          {/* {tags ? (
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-              <div className="ml-4 d-none d-lg-block d-xl-block">
-                <Search />
-              </div>
-              <ul className="navbar-nav ml-auto">
-                {tags.map((item, index) => (
-                  <li className="nav-item" key={index}>
-                    <Link
-                      to={`/${shop}/store/${item}/`}
-                      className={`nav-link ${this.getNavLinkClass(`${item}`)}`}
-                      onClick={() => clicker()}
-                    >
-                      {jsUcfirst(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            ""
-          )} */}
+          
         </nav>
+        
+        <MiniNavigation tags={tags} shop={shop}/>
+
       </div>
     );
   }

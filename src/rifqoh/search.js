@@ -35,25 +35,22 @@ class Search extends Component {
   }
   componentWillUnmount() {
     this.setState({ term: "", results: [] });
-    console.log("kkk");
   }
   submit(event) {
+    const {shop_slug} = this.props;
     Progress.show();
     event.preventDefault();
-    let urll = `${url}/api/r_search/?q=` + this.state.term;
+    let urll = `${url}/api/r_search/${shop_slug}/?q=` + this.state.term;
     fetch(urll, {})
       .then(res => res.json())
       .then(respone => {
+        console.log(respone.results);
         let data = {
           results: respone.results,
           redirect: true
         };
         this.setState(data);
-        this.props.history.push({
-          pathname: "/results",
-          search: "?query=" + this.state.term,
-          state: { detail: this.state.results }
-        });
+        this.props.getResults(this.state.results);
       });
   }
 

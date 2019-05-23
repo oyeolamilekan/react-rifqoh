@@ -58,6 +58,8 @@ const Main = () => (
       <PrivateRoute path="/admin/tags" component={tagsProduct} />
       <PrivateRoute path="/edit" component={EditInfo} />
       <PrivateRoute path="/create/shop" component={createShop} />
+      <Route path="/:slug/store/index" component={Index} />
+      <Route path="/:slug/store/trending" component={NotFound} />
       <Route path="/:slug/store/:cat" component={Index} />
       <Route path="" component={NotFound} />
     </Switch>

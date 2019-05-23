@@ -36,6 +36,7 @@ class cProducts extends Component {
           isNext: res.data.next ? res.data.next.replace(url, "") : "",
           loading: false
         });
+        console.log(res.data.results);
       })
       .catch(err => {
         this.setState({
@@ -166,7 +167,7 @@ class cProducts extends Component {
                               : item.name}
                           </td>
                           <td>{item.price}</td>
-                          <td>{item.genre}</td>
+                          <td>{item.genre.name}</td>
                           <td>
                             <span className="bg-success p-1 rounded text-white">
                               Available

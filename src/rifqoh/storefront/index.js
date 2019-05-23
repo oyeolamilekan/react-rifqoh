@@ -12,7 +12,8 @@ export default class Index extends Component {
   state = {
     shop: "",
     logo: "",
-    tagsArray: [],
+    shop_category: [],
+    shop_slug: "",
     products: [],
     isLoading: true,
     isNextLoading: false,
@@ -24,17 +25,17 @@ export default class Index extends Component {
     axios
       .get(`${url}/api/shop_info/${slug}/`)
       .then(res => {
-        const { shop_name, tags, logo } = res.data.shop_info;
+        const { shop_name, tags, logo, slug } = res.data.shop_info;
         this.setState({
           shop: shop_name,
           logo: logo,
-          tagsArray: tags,
+          shop_slug: slug,
+          shop_category: tags,
           isLoading: false
         });
       })
       .catch(() => this.props.history.push("/404"));
     this.getProducts();
-    
     document.addEventListener("scroll", this.trackScrolling);
   }
 
@@ -93,6 +94,12 @@ export default class Index extends Component {
     }
   };
 
+  getResults = results => {
+    this.setState({
+      products:results
+    })
+  }
+
   isBottom(el) {
     return el.getBoundingClientRect().bottom <= window.innerHeight;
   }
@@ -100,11 +107,12 @@ export default class Index extends Component {
   render() {
     const {
       shop,
-      tagsArray,
+      shop_category,
       products,
       isNextLoading,
       isLoading,
-      logo
+      logo,
+      shop_slug
     } = this.state;
     const { slug } = this.props.match.params;
     return (
@@ -122,9 +130,11 @@ export default class Index extends Component {
             <ShopNav
               shop={shop}
               logo={logo}
-              tags={tagsArray}
+              tags={shop_category}
               slug={slug}
+              shop_slug={shop_slug}
               getProducts={this.getProducts}
+              getResults={this.getResults}
             />
             {products.length > 0 ? (
               <ProductDetails results={products} />

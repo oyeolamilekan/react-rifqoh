@@ -436,7 +436,7 @@ a.float:hover {
 
 .pointer {
   cursor: pointer;
-} 
+}
 .bg-line {
   background: -webkit-linear-gradient(90deg, rgb(17, 44, 69), rgb(48, 64, 72));
   background: linear-gradient(90deg, rgb(17, 44, 69), rgb(48, 64, 72));
@@ -465,6 +465,27 @@ a.float:hover {
   top: 35vh;
 }
 
-.position-relative{
+.position-relative {
   position: relative;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }

@@ -31,10 +31,9 @@ export default class AddProduct extends Component {
       })
       .then(res => {
         this.setState({
-          chossenTags: res.data.choosen_catergory
-            ? res.data.choosen_catergory
-            : []
+          chossenTags: res.data.shop_categories
         });
+        console.log(res)
       })
       .catch(err => {
         this.setState({
@@ -64,12 +63,14 @@ export default class AddProduct extends Component {
   // Submits the form data to the API
   // And does some cool animation
   handleSubmit = event => {
+    event.preventDefault();
     event.target.value = null;
     this.setState({
       loading: true,
       sent: false
     });
 
+    console.log(this.state);
     // Stop the form from submitting
     event.preventDefault();
 
@@ -173,10 +174,11 @@ export default class AddProduct extends Component {
               className="form-control"
               onChange={this.handleChange}
               name="tags"
+              required
             >
-              <option defaultValue>....</option>
+              <option defaultValue value="">Choose category..</option>
               {chossenTags.map((e, key) => {
-                return <option key={key}>{e}</option>;
+                return <option key={key} value={JSON.stringify(e)}>{e.name}</option>;
               })}
             </select>
           </div>

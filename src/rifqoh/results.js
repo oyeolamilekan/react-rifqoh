@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 import BodyPage from "./bodyPage";
 import CurrentPage from "./currentPage";
 import MiniNavigation from "./home/mininav";
-import Nav from "./navTypes/nav";
+import Nav from "./navTypes/shopNav";
 import Progress from "react-progress-2";
 
 function Results(props) {
@@ -19,7 +19,7 @@ function Results(props) {
   });
   return (
     <div>
-      <Nav/>
+      
       <div className="parent">
         {detail.length === 0 ? (
           <div className="text-center test-fixed container">
@@ -35,8 +35,8 @@ function Results(props) {
           </div>
         ) : (
           <div className="result-list">
+            <Nav/>
             <CurrentPage current="Search" dClass="grd-color-1" />
-            <MiniNavigation />
             <BodyPage results={detail} />
           </div>
         )}
