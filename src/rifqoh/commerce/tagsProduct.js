@@ -50,6 +50,9 @@ export default class tagsProduct extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.setState({
+      loading: true
+    });
     const { categoryName } = this.state;
     const data = { categoryName };
     axios
@@ -61,9 +64,18 @@ export default class tagsProduct extends Component {
       })
       .then(res => {
         this.setState({
-          shop_category: [...this.state.shop_category, res.data]
+          shop_category: [...this.state.shop_category, res.data],
+          loading: false,
+          sent: true
         });
       });
+  };
+
+  handleDismiss = event => {
+    event.preventDefault();
+    this.setState({
+      sent: false
+    });
   };
 
   render() {
@@ -118,7 +130,19 @@ export default class tagsProduct extends Component {
                   {loading ? (
                     <div className="text-center">Loading..</div>
                   ) : sent ? (
-                    <div className="text-center">Successfull</div>
+                    <div
+                      class="alert alert-success alert-dismissible fade show"
+                      role="alert"
+                    >
+                      <strong>Successful</strong> the tag has been created.
+                      <button
+                        type="button"
+                        className="close"
+                        onClick={this.handleDismiss}
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
                   ) : (
                     ""
                   )}
@@ -137,7 +161,11 @@ export default class tagsProduct extends Component {
                     />
                   </div>
                   <button className="btn btn-dark btn-block btn-lg">
-                    Sumbit.
+                    {loading ? (
+                      <Loading color={"white"} sizeUnit={"px"} size={13} />
+                    ) : (
+                      "Submit"
+                    )}
                   </button>
                 </form>
               </div>
