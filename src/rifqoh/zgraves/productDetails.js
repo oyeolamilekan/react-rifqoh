@@ -6,7 +6,7 @@
 
 import React, { Component } from "react";
 
-import url from "./url";
+import url from "../config/url";
 
 class ProductDetail extends Component {
   state = {

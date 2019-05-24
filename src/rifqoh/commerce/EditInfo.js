@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 import Loading from "react-spinners/BeatLoader";
 import Nav from "../navTypes/commerceNav";
-import Token from "../utils";
+import Token from "../utils/utils";
 import axios from "axios";
-import url from "../url";
+import url from "../config/url";
 
 export default class EditInfo extends Component {
   state = {

@@ -9,7 +9,7 @@ import "./bodyPage";
 import React, { Component } from "react";
 
 import Progress from "react-progress-2";
-import url from "./url";
+import url from "../config/url";
 import { withRouter } from "react-router";
 
 class Search extends Component {

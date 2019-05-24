@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-import Token from "../utils";
+import Token from "../utils/utils";
 import axios from "axios";
-import { delimitNumbers } from "../utils";
-import url from "../url";
+import { delimitNumbers } from "../utils/utils";
+import url from "../config/url";
 
 export default class EditProducts extends Component {
   state = {

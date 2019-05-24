@@ -10,10 +10,10 @@ import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
 import Loading from "react-spinners/BeatLoader";
+import Logo from "../imgs/strip.png";
 import Progress from "react-progress-2";
 import axios from "axios";
-import strip from "../strip.png";
-import url from "../url";
+import url from "../config/url";
 
 class Login extends Component {
   state = {
@@ -82,7 +82,7 @@ class Login extends Component {
         <div className="bg-white shadow rounded h-50 login">
           <div className="login-container p-3">
             <div className="img-container text-center">
-              <img src={strip} className="reg-img" alt="logo" />
+              <img src={Logo} className="reg-img" alt="logo" />
             </div>
             <div className="mt-4" />
             {error ? (

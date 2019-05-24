@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
 import Loading from "react-spinners/BeatLoader";
+import Logo from "../imgs/strip.png";
 import Nav from "../navTypes/commerceNav";
-import Token from "../utils";
+import Token from "../utils/utils";
 import axios from "axios";
-import strip from "../strip.png";
-import url from "../url";
+import url from "../config/url";
 
 export default class ChangePassword extends Component {
   state = {
@@ -75,7 +75,7 @@ export default class ChangePassword extends Component {
         <Nav />
         <div className="col-md-4 offset-md-4 mt-3">
           <div className="p-3 bg-white text-center shadow rounded">
-            <img src={strip} className="reg-img" alt="logo" />
+            <img src={Logo} className="reg-img" alt="logo" />
             {failed ? (
               <div
                 class="alert alert-danger alert-dismissible fade show"

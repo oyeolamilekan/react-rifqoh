@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
 import { Helmet } from "react-helmet";
-import MiniLoading from "../miniLoading";
+import MiniLoading from "../zgraves/miniLoading";
 import ProductDetails from "./ProductDetail";
 import Progress from "react-progress-2";
 import ShopNav from "../navTypes/shopNav";
 import axios from "axios";
-import url from "../url";
+import url from "../config/url";
 
 export default class Index extends Component {
   state = {

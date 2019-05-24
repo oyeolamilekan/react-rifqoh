@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 import Loading from "react-spinners/BeatLoader";
 import Nav from "../navTypes/commerceNav";
-import Token from "../utils";
+import Token from "../utils/utils";
 import axios from "axios";
-import { jsUcfirst } from "../utils";
-import url from "../url";
+import { jsUcfirst } from "../utils/utils";
+import url from "../config/url";
 
 export default class tagsProduct extends Component {
   /**

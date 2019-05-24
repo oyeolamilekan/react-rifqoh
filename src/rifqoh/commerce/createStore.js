@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import Loading from "react-spinners/BeatLoader";
-import Token from "../utils";
+import Logo from "../imgs/strip.png";
+import Token from "../utils/utils";
 import axios from "axios";
-import strip from "../strip.png";
-import url from "../url";
+import url from "../config/url";
 
 class createShop extends Component {
   state = {
@@ -76,7 +76,7 @@ class createShop extends Component {
       <div className="col-md-4 offset-md-4 middle-belt">
         <div className="container bg-white p-4 shadow rounded">
           <div className="img-container text-center mb-3">
-            <img src={strip} className="reg-img" alt="logo" />
+            <img src={Logo} className="reg-img" alt="logo" />
           </div>
           {is_exist ? (
             <div

@@ -8,10 +8,10 @@ import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
 import Loading from "react-spinners/BeatLoader";
+import Logo from "../imgs/strip.png";
 import Progress from "react-progress-2";
 import axios from "axios";
-import strip from "../strip.png";
-import url from "../url";
+import url from "../config/url";
 
 class SignUp extends Component {
   state = {
@@ -105,7 +105,7 @@ class SignUp extends Component {
       <div className="col-md-4 offset-md-4 middle-belt">
         <div className="bg-white shadow rounded login">
           <div className="img-container text-center p-3">
-            <img src={strip} className="reg-img" alt="logo" />
+            <img src={Logo} className="reg-img" alt="logo" />
           </div>
           <div className="login-container p-3">
             {error["username"]}

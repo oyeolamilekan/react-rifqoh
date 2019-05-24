@@ -8,7 +8,7 @@ import React, { useEffect } from "react";
 
 import BodyPage from "./bodyPage";
 import CurrentPage from "./currentPage";
-import Nav from "./navTypes/shopNav";
+import Nav from "../navTypes/shopNav";
 import Progress from "react-progress-2";
 
 function Results(props) {

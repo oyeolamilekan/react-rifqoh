@@ -4,9 +4,9 @@ import AddProduct from "./AddProduct";
 import EditProducts from "./EditProducts";
 import Loading from "react-spinners/BeatLoader";
 import Nav from "../navTypes/commerceNav";
-import Token from "../utils";
+import Token from "../utils/utils";
 import axios from "axios";
-import url from "../url";
+import url from "../config/url";
 
 class cProducts extends Component {
   state = {
