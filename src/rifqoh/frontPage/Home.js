@@ -53,7 +53,7 @@ export default function Home() {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
                 <Link
-                  to="/admin/tags"
+                  to="/commerce/tags"
                   className="nav-link btn btn-dark text-white"
                 >
                   GO TO ADMIN

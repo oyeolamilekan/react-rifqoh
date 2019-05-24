@@ -48,7 +48,7 @@ class CommerceNav extends Component {
               <li className="nav-item">
                 <NavLink
                   exact
-                  to="/admin/tags"
+                  to="/commerce/tags"
                   activeClassName="active"
                   className="nav-link"
                 >
@@ -58,7 +58,7 @@ class CommerceNav extends Component {
               <li className="nav-item">
                 <NavLink
                   exact
-                  to="/admin/products"
+                  to="/commerce/products"
                   activeClassName="active"
                   className="nav-link"
                 >
@@ -68,7 +68,7 @@ class CommerceNav extends Component {
               <li className="nav-item">
                 <NavLink
                   exact
-                  to="/edit"
+                  to="/commerce/edit"
                   activeClassName="active"
                   className="nav-link"
                 >
@@ -102,7 +102,7 @@ class CommerceNav extends Component {
                       Log out
                     </Link>
                     <Link
-                      to='/change_password'
+                      to='/commerce/change_password'
                       className="dropdown-item" 
                     >
                       Change Password

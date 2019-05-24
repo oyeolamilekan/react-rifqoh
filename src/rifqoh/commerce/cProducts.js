@@ -17,7 +17,8 @@ class cProducts extends Component {
     deleteData: "",
     deleteLoading: false,
     deleteSuccess: false,
-    clicked: false
+    clicked: false,
+    error: false
   };
 
   // React auto runs this component when the components
@@ -38,9 +39,10 @@ class cProducts extends Component {
         });
         console.log(res.data.results);
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
-          is_exist: true
+          error: true,
+          loading: false
         });
       });
   }
@@ -134,7 +136,8 @@ class cProducts extends Component {
       editProduct,
       loading,
       deleteLoading,
-      deleteSuccess
+      deleteSuccess,
+      error
     } = this.state;
     return (
       <div>
@@ -145,6 +148,10 @@ class cProducts extends Component {
               {loading ? (
                 <div className="text-center">
                   <Loading />{" "}
+                </div>
+              ) : error ? (
+                <div className="text-center">
+                  There an error with your internet connection
                 </div>
               ) : productList.length > 0 ? (
                 <div className="product-list table-responsive">

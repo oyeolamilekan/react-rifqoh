@@ -24,14 +24,14 @@ const Main = () => (
   <div className="con">
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
-      <Route path="/logout" component={Logout} />
-      <Route path="/signup" component={SignUp} />
-      <PrivateRoute path="/change_password" component={ChangePassword} />
-      <PrivateRoute path="/admin/products" component={cProducts} />
-      <PrivateRoute path="/admin/tags" component={tagsProduct} />
-      <PrivateRoute path="/edit" component={EditInfo} />
-      <PrivateRoute path="/create/shop" component={createShop} />
+      <Route path="/commerce/login" component={Login} />
+      <Route path="/commerce/logout" component={Logout} />
+      <Route path="/commerce/signup" component={SignUp} />
+      <PrivateRoute path="/commerce/change_password" component={ChangePassword} />
+      <PrivateRoute path="/commerce/products" component={cProducts} />
+      <PrivateRoute path="/commerce/tags" component={tagsProduct} />
+      <PrivateRoute path="/commerce/edit" component={EditInfo} />
+      <PrivateRoute path="/commerce/create/shop" component={createShop} />
       <Route path="/:slug/store/index" component={Index} />
       <Route path="/:slug/store/trending" component={NotFound} />
       <Route path="/:slug/store/:cat" component={Index} />

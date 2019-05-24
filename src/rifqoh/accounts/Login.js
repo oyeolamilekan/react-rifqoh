@@ -64,7 +64,7 @@ class Login extends Component {
         localStorage.setItem("shopName", shop_name);
         localStorage.setItem("expirationDate", expirationDate);
         shop_name.length > 0
-          ? this.props.history.push("/admin/tags")
+          ? this.props.history.push("/commerce/tags")
           : this.props.history.push("/");
       })
       .catch(err => {

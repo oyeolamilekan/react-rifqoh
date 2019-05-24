@@ -60,7 +60,7 @@ class SignUp extends Component {
         localStorage.setItem("token", token);
         localStorage.setItem("expirationDate", expirationDate);
         JSON.parse(localStorage.getItem("is_commerce"))
-          ? this.props.history.push("/create/shop")
+          ? this.props.history.push("/commerce/create/shop")
           : this.props.history.push("/");
       })
       .catch(er => {

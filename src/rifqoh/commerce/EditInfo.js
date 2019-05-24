@@ -13,7 +13,8 @@ export default class EditInfo extends Component {
     logoName: "",
     address: "",
     description: "",
-    loading: true
+    loading: true,
+    error: false
   };
   fileInput = React.createRef();
 
@@ -32,6 +33,12 @@ export default class EditInfo extends Component {
           name: res.data.title,
           address: res.data.address,
           description: res.data.description,
+          loading: false
+        });
+      })
+      .catch(() => {
+        this.setState({
+          error: true,
           loading: false
         });
       });
@@ -85,7 +92,7 @@ export default class EditInfo extends Component {
       .then(res => {
         this.setState({
           loading: false,
-          logoName:""
+          logoName: ""
         });
         localStorage.setItem("logo", res.data.img);
       })
@@ -99,7 +106,7 @@ export default class EditInfo extends Component {
 
   render() {
     const shopName = localStorage.getItem("shopName");
-    const { name, address, description, loading, logoName } = this.state;
+    const { name, address, description, loading, logoName, error } = this.state;
     return (
       <div>
         <Nav name={shopName} />
@@ -108,6 +115,10 @@ export default class EditInfo extends Component {
             {loading ? (
               <div className="text-center">
                 <Loading />
+              </div>
+            ) : error ? (
+              <div className="text-center">
+                There an error with your internet connection
               </div>
             ) : (
               <div>
