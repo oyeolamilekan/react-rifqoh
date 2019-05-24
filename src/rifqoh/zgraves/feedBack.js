@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Axios from "axios";
 import Loading from "react-spinners/ClipLoader";
-import url from "./url";
+import url from "../config/url";
 
 class FeedBack extends Component {
   state = {

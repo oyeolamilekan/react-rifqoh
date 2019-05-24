@@ -63,12 +63,12 @@ export default function Home() {
           ) : (
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/signup">
+                <Link className="nav-link" to="/commerce/signup">
                   Sign up
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+                <Link className="nav-link" to="/commerce/login">
                   Sign in
                 </Link>
               </li>

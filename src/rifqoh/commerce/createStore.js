@@ -9,6 +9,7 @@ import url from "../config/url";
 class createShop extends Component {
   state = {
     shopName: "",
+    phoneNumber: "",
     shopCatergory: "",
     is_exist: false,
     isLoading: false
@@ -105,6 +106,18 @@ class createShop extends Component {
                 placeholder="Your store name"
                 onChange={this.handleChange}
                 name="shopName"
+                required={true}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                id="InputShopName"
+                aria-describedby="helpUsername"
+                placeholder="Your phone number."
+                onChange={this.handleChange}
+                name="phoneNumber"
                 required={true}
               />
             </div>
