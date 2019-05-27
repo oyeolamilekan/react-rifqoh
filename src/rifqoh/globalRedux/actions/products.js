@@ -1,21 +1,14 @@
-import { GET_PRODUCTS, GET_SHOP_INFO, MORE_PRODUCTS } from "./types";
+import {
+  GET_PRODUCTS,
+  GET_SHOP_INFO,
+  GET_TRENDING_PRODUCTS,
+  MORE_PRODUCTS,
+  MORE_TRENDING_PRODUCTS,
+  SEARCH_PRODUCTS
+} from "./types";
 
 import axios from "axios";
 import url from "../../config/url";
-
-export const getProducts = ({ slug, cat }) => dispatch => {
-  cat = cat === undefined ? "index" : cat;
-  axios
-    .get(`${url}/api/shop_product/${slug}/${cat}/`)
-    .then(res => {
-      dispatch({
-        type: GET_PRODUCTS,
-        payload: res.data.results,
-        nextUrl: res.data.next ? res.data.next.replace(url, "") : ""
-      });
-    })
-    .catch(err => console.log(err));
-};
 
 export const getShopInfo = ({ slug }) => dispatch => {
   axios
@@ -29,6 +22,20 @@ export const getShopInfo = ({ slug }) => dispatch => {
       });
     })
     .catch(() => this.props.history.push("/404"));
+};
+
+export const getProducts = ({ slug, cat }) => dispatch => {
+  cat = cat === undefined ? "index" : cat;
+  axios
+    .get(`${url}/api/shop_product/${slug}/${cat}/`)
+    .then(res => {
+      dispatch({
+        type: GET_PRODUCTS,
+        payload: res.data.results,
+        nextUrl: res.data.next ? res.data.next.replace(url, "") : ""
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 export const getMoreProducts = nextUrl => dispatch => {
@@ -45,4 +52,16 @@ export const getMoreProducts = nextUrl => dispatch => {
       })
       .catch(e => console.log(`${e}`));
   }
+};
+
+export const searchProducts = (shop_name, query_param) => dispatch => {
+  axios
+    .get(`${url}/api/r_search/${shop_name}/?q=${query_param}`)
+    .then(res => {
+      dispatch({
+        type: SEARCH_PRODUCTS,
+        payload: res.data.results
+      });
+    })
+    .catch(() => this.props.history.push("/404"));
 };

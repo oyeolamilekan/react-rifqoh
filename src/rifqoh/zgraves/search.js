@@ -9,58 +9,38 @@ import "./bodyPage";
 import React, { Component } from "react";
 
 import Progress from "react-progress-2";
-import url from "../config/url";
+import { connect } from "react-redux";
+import { searchProducts } from "../globalRedux/actions/products";
 import { withRouter } from "react-router";
 
 class Search extends Component {
-  constructor(props) {
-    super(props);
-    // BodyPage.caller(updateOnQuery('terr'))
-    this.state = {
-      results: [],
-      term: "",
-      redirect: false
-    };
+  state = {
+    term: ""
+  };
 
-    this.submit = this.submit.bind(this);
-    this.changeTerm = this.changeTerm.bind(this);
-  }
-
-  changeTerm(event) {
-    this.setState({ term: event.target.value });
-  }
-
-  componentWillUpdate() {
-    Progress.hide();
-  }
-  componentWillUnmount() {
-    this.setState({ term: "", results: [] });
-  }
-  submit(event) {
-    const {shop_slug} = this.props;
-    Progress.show();
+  changeTerm = event => {
     event.preventDefault();
-    let urll = `${url}/api/r_search/${shop_slug}/?q=` + this.state.term;
-    fetch(urll, {})
-      .then(res => res.json())
-      .then(respone => {
-        console.log(respone.results);
-        let data = {
-          results: respone.results,
-          redirect: true
-        };
-        this.setState(data);
-        this.props.getResults(this.state.results);
-      });
-  }
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  submit = event => {
+    event.preventDefault();
+    const { term } = this.state;
+    const { shop_slug } = this.props;
+    Progress.show();
+    this.props.searchProducts(shop_slug, term);
+  };
 
   render() {
+    const { term } = this.state;
     return (
       <div>
         <form onSubmit={this.submit}>
           <input
             onChange={this.changeTerm}
-            className="form-control "
+            className="form-control"
+            value={term}
+            name="term"
             placeholder="Search ..."
           />
         </form>
@@ -68,5 +48,7 @@ class Search extends Component {
     );
   }
 }
-
-export default withRouter(Search);
+export default connect(
+  null,
+  { searchProducts }
+)(withRouter(Search));

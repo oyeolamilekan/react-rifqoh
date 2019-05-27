@@ -1,7 +1,9 @@
 import {
   GET_PRODUCTS,
   GET_SHOP_INFO,
+  GET_TRENDING_PRODUCTS,
   MORE_PRODUCTS,
+  MORE_TRENDING_PRODUCTS,
   SEARCH_PRODUCTS
 } from "../actions/types.js";
 
@@ -16,6 +18,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case GET_SHOP_INFO:
+      return {
+        ...state,
+        shop_info: action.payload,
+        navLoading: false
+      };
     case GET_PRODUCTS:
       return {
         ...state,
@@ -23,13 +31,21 @@ export default function(state = initialState, action) {
         nextUrl: action.nextUrl,
         loading: false
       };
-    case GET_SHOP_INFO:
+    case MORE_PRODUCTS:
       return {
         ...state,
-        shop_info: action.payload,
-        navLoading: false
+        products: [...state.products, ...action.payload],
+        nextUrl: action.nextUrl,
+        nextLoading: action.nextUrl === "" ? false : true
       };
-    case MORE_PRODUCTS:
+    case GET_TRENDING_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+        nextUrl: action.nextUrl,
+        loading: false
+      };
+    case MORE_TRENDING_PRODUCTS:
       return {
         ...state,
         products: [...state.products, ...action.payload],
@@ -39,8 +55,8 @@ export default function(state = initialState, action) {
     case SEARCH_PRODUCTS:
       return {
         ...state,
-        products: action.payload,
-      }
+        products: action.payload
+      };
     default:
       return state;
   }

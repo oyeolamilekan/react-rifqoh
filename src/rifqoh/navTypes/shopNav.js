@@ -11,9 +11,6 @@ class ShopNav extends Component {
   getNavLinkClass = path => {
     return this.props.location.pathname.indexOf(path) > 0 ? "active" : "";
   };
-  getResults = results => {
-    this.props.getResults(results);
-  };
   render() {
     const { shop_name, logo, tags, slug } = this.props.shop_info;
     const { navLoading } = this.props;
@@ -39,7 +36,7 @@ class ShopNav extends Component {
                 )}
               </NavLink>
               <div className="specialBar mr-1">
-                <Search shop_slug={slug} getResults={this.getResults} />
+                <Search shop_slug={slug} />
               </div>
               <button
                 className="navbar-toggler"
@@ -91,7 +88,7 @@ class ShopNav extends Component {
                     data-target=".navbar-collapse.show"
                   >
                     <div className="mr-auto d-none d-lg-block d-xl-block">
-                      <Search shop_slug={slug} getResults={this.getResults} />
+                      <Search shop_slug={slug}/>
                     </div>
                   </li>
                 </ul>
