@@ -59,7 +59,7 @@ class ShopNav extends Component {
                   >
                     <NavLink
                       exact
-                      to={`/${slug}/store/index`}
+                      to={`/${slug}/store/index/`}
                       activeClassName={`active`}
                       className="nav-link"
                     >
