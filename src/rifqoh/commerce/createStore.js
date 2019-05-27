@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Loading from "react-spinners/BeatLoader";
 import Logo from "../imgs/strip.png";
 import Token from "../utils/utils";
+import acceptOnlyNumber from "../utils/acceptNumber";
 import axios from "axios";
 import url from "../config/url";
 
@@ -11,12 +12,35 @@ class createShop extends Component {
     shopName: "",
     phoneNumber: "",
     shopCatergory: "",
+    complete_num: false,
+    shop_name: false,
     is_exist: false,
     isLoading: false
   };
 
   // Handle text typed in by the user.
   handleChange = event => {
+    if (event.target.name === 'phoneNumber') {
+      if (event.target.value.length >= 11) {
+        this.setState({
+          complete_num: true
+        })
+      } else {
+        this.setState({
+          complete_num: false
+        })
+      }
+    } else if (event.target.name === 'shopName'){
+      if (event.target.value.length > 0) {
+        this.setState({
+          shop_name: true
+        })
+      } else {
+        this.setState({
+          shop_name: false
+        })
+      }
+    }
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -36,13 +60,14 @@ class createShop extends Component {
     this.setState({
       isLoading: true
     });
-    const { shopName, shopCategory } = this.state;
+    const { shopName, shopCategory, phoneNumber } = this.state;
     axios
       .post(
         `${url}/api/create_shop/`,
         {
           shopName: shopName,
-          shopCategory: shopCategory
+          shopCategory: shopCategory,
+          phoneNumber: phoneNumber
         },
         {
           headers: {
@@ -61,7 +86,7 @@ class createShop extends Component {
         } else {
           localStorage.setItem("shopName", shopName);
           localStorage.setItem("shopSlug", res.data.slug);
-          this.props.history.push("/admin/tags");
+          this.props.history.push("/commerce/tags");
         }
       })
       .catch(err => {
@@ -72,7 +97,7 @@ class createShop extends Component {
       });
   };
   render() {
-    const { is_exist, isLoading } = this.state;
+    const { is_exist, isLoading, phoneNumber, complete_num, shop_name } = this.state;
     return (
       <div className="col-md-4 offset-md-4 middle-belt">
         <div className="container bg-white p-4 shadow rounded">
@@ -118,6 +143,7 @@ class createShop extends Component {
                 placeholder="Your phone number."
                 onChange={this.handleChange}
                 name="phoneNumber"
+                value={acceptOnlyNumber(phoneNumber)}
                 required={true}
               />
             </div>
@@ -141,7 +167,7 @@ class createShop extends Component {
               <button
                 type="submit"
                 className={`btn btn-block p-2 btn-dark text-white h6 btn-lg shadow ${
-                  isLoading ? "disabled" : ""
+                  isLoading ? "disabled" : (!complete_num || !shop_name) ? "disabled" :  ""
                 }`}
               >
                 {isLoading ? (

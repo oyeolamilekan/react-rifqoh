@@ -14,11 +14,11 @@ import React from "react";
 function App() {
   return (
     <div>
-      <Progress.Component
-        style={{ background: "#dc3545" }}
-        thumbStyle={{ background: "#dc3545" }}
-      />
-      <Main />
+        <Progress.Component
+          style={{ background: "#dc3545" }}
+          thumbStyle={{ background: "#dc3545" }}
+        />
+        <Main />
     </div>
   );
 }

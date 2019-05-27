@@ -1,46 +1,19 @@
 import React, { Component } from "react";
+import {
+  getMoreProducts,
+  getProducts,
+  getShopInfo
+} from "../globalRedux/actions/products";
 
-import { Helmet } from "react-helmet";
 import MiniLoading from "../zgraves/miniLoading";
 import ProductDetails from "./ProductDetail";
 import Progress from "react-progress-2";
 import ShopNav from "../navTypes/shopNav";
-import axios from "axios";
-import url from "../config/url";
+import { connect } from "react-redux";
 
-export default class Index extends Component {
-  state = {
-    shop: "",
-    logo: "",
-    shop_category: [],
-    shop_slug: "",
-    products: [],
-    isLoading: true,
-    isNextLoading: false,
-    isNext: null
-  };
-
+class Index extends Component {
   componentDidMount() {
-    const { slug } = this.props.match.params;
-    axios
-      .get(`${url}/api/shop_info/${slug}/`)
-      .then(res => {
-        const { shop_name, tags, logo, slug } = res.data.shop_info;
-        this.setState({
-          shop: shop_name,
-          logo: logo,
-          shop_slug: slug,
-          shop_category: tags,
-          isLoading: false
-        });
-      })
-      .catch(() => this.props.history.push("/404"));
     this.getProducts();
-    document.addEventListener("scroll", this.trackScrolling);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("scroll", this.trackScrolling);
   }
 
   componentDidUpdate(prevProps) {
@@ -54,88 +27,44 @@ export default class Index extends Component {
     } else {
       Progress.hide();
     }
+    document.addEventListener("scroll", this.trackScrolling);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("scroll", this.trackScrolling);
   }
 
   getProducts() {
-    const { slug, cat } = this.props.match.params;
-    axios.get(`${url}/api/shop_product/${slug}/${cat}/`).then(res => {
-      this.setState({
-        products: res.data.results,
-        isNext: res.data.next ? res.data.next.replace(url, "") : ""
-      });
-    });
-    Progress.hide();
+    this.props.getProducts(this.props.match.params);
+    this.props.getShopInfo(this.props.match.params);
   }
 
   trackScrolling = () => {
     const wrappedElement = document.getElementById("root");
     if (this.isBottom(wrappedElement)) {
-      this.setState({
-        isNextLoading: true
-      });
       this.loadMore();
     }
   };
 
   loadMore = () => {
-    const { isNext } = this.state;
-    if (isNext !== "") {
-      let next = `${url}${isNext}`;
-      axios.get(next).then(res => {
-        this.setState({
-          products: [...this.state.products, ...res.data.results],
-          isNext: res.data.next ? res.data.next.replace(url, "") : ""
-        });
-      });
-    } else {
-      this.setState({
-        isNextLoading: false
-      });
-    }
+    this.props.getMoreProducts(this.props.nextUrl);
   };
-
-  getResults = results => {
-    this.setState({
-      products:results
-    })
-  }
 
   isBottom(el) {
     return el.getBoundingClientRect().bottom <= window.innerHeight;
   }
 
   render() {
-    const {
-      shop,
-      shop_category,
-      products,
-      isNextLoading,
-      isLoading,
-      logo,
-      shop_slug
-    } = this.state;
-    const { slug } = this.props.match.params;
+    const { products, loading, nextLoading } = this.props;
     return (
-      <div>
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>{shop} store</title>
-        </Helmet>
-        {isLoading ? (
+      <div className="commerce-container">
+        {loading ? (
           <div className="mt-5 text-center">
-            <h1>Loading..</h1>
+            <h1>Loading</h1>
           </div>
         ) : (
           <div>
-            <ShopNav
-              shop={shop}
-              logo={logo}
-              tags={shop_category}
-              slug={slug}
-              shop_slug={shop_slug}
-              getProducts={this.getProducts}
-              getResults={this.getResults}
-            />
+            <ShopNav />
             {products.length > 0 ? (
               <ProductDetails results={products} />
             ) : (
@@ -143,16 +72,23 @@ export default class Index extends Component {
                 <h1> No products available</h1>
               </div>
             )}
-            {isNextLoading ? (
-              <div className="text-center">
-                <MiniLoading />
-              </div>
-            ) : (
-              ""
-            )}
+            <div className="text-center">
+              {nextLoading ? <MiniLoading /> : ""}
+            </div>
           </div>
         )}
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  products: state.products.products,
+  loading: state.products.loading,
+  nextUrl: state.products.nextUrl,
+  nextLoading: state.products.nextLoading
+});
+export default connect(
+  mapStateToProps,
+  { getProducts, getShopInfo, getMoreProducts }
+)(Index);

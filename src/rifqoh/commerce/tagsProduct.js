@@ -70,6 +70,7 @@ export default class tagsProduct extends Component {
         this.setState({
           shop_category: [...this.state.shop_category, res.data],
           loading: false,
+          categoryName: "",
           sent: true
         });
       })

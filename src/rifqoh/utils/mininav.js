@@ -5,7 +5,7 @@ import Progress from "react-progress-2";
 import React from "react";
 import { withRouter } from "react-router";
 
-function MiniNavigation({ tags, shop }) {
+function MiniNavigation({ tags, slug }) {
   const clicker = () => {
     Progress.show();
   };
@@ -23,7 +23,7 @@ function MiniNavigation({ tags, shop }) {
           {tags.map((item, index) => (
             <Link
               className={`nav-link  ${getNavLinkClass(item.slug, item.name)}`}
-              to={`/${shop}/store/${item.slug}/`}
+              to={`/${slug}/store/${item.slug}/`}
               onClick={clicker}
               key={index}
             >
