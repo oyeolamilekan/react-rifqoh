@@ -25,7 +25,7 @@ class ShopNav extends Component {
           <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-white">
               <NavLink
-                to={`/${slug}/store/index`}
+                to={`/${slug}/store/index/`}
                 className="navbar-brand"
                 onClick={clicker}
               >

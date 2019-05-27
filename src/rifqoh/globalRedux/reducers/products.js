@@ -1,7 +1,8 @@
 import {
   GET_PRODUCTS,
   GET_SHOP_INFO,
-  MORE_PRODUCTS
+  MORE_PRODUCTS,
+  SEARCH_PRODUCTS
 } from "../actions/types.js";
 
 const initialState = {
@@ -35,6 +36,11 @@ export default function(state = initialState, action) {
         nextUrl: action.nextUrl,
         nextLoading: action.nextUrl === "" ? false : true
       };
+    case SEARCH_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+      }
     default:
       return state;
   }
