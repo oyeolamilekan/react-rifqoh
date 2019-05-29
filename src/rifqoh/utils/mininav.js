@@ -9,6 +9,10 @@ function MiniNavigation({ tags, slug }) {
   const clicker = () => {
     Progress.show();
   };
+  const checkTrending = () => {
+    const urlArray = window.location.pathname.split("/");
+    return urlArray.includes("trending");
+  };
   const matchExact = str => {
     const urlArray = window.location.pathname.split("/");
     return urlArray.includes(str);
@@ -23,7 +27,7 @@ function MiniNavigation({ tags, slug }) {
           {tags.map((item, index) => (
             <Link
               className={`nav-link  ${getNavLinkClass(item.slug, item.name)}`}
-              to={`/${slug}/store/${item.slug}/`}
+              to={`${checkTrending() ? "/trending" : ""}/${item.slug}`}
               onClick={clicker}
               key={index}
             >

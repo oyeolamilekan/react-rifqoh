@@ -9,7 +9,6 @@ import { Route, Switch } from "react-router-dom";
 import ChangePassword from "../accounts/ChangePassword";
 import EditInfo from "../commerce/EditInfo";
 import Home from "../frontPage/Home";
-import Index from "../storefront";
 import Login from "../accounts/Login";
 import Logout from "../accounts/Logout";
 import NotFound from "../errorPages/404";
@@ -32,9 +31,6 @@ const Main = () => (
       <PrivateRoute path="/commerce/tags" component={tagsProduct} />
       <PrivateRoute path="/commerce/edit" component={EditInfo} />
       <PrivateRoute path="/commerce/create/shop" component={createShop} />
-      <Route path="/:slug/store/index" component={Index} />
-      <Route path="/:slug/store/trending" component={NotFound} />
-      <Route path="/:slug/store/:cat" component={Index} />
       <Route path="" component={NotFound} />
     </Switch>
   </div>

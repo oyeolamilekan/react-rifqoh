@@ -7,10 +7,12 @@ import {
   SEARCH_PRODUCTS
 } from "../actions/types.js";
 
+const shopName = localStorage.getItem("shopName")
 const initialState = {
   products: [],
   shop_info: {},
   nextUrl: "",
+  shopName:shopName,
   nextLoading: false,
   loading: true,
   navLoading: true

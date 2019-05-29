@@ -193,7 +193,7 @@ class SignUp extends Component {
             </form>
           </div>
           <div className="p-4 bg-auth-container m-0 text-center rounded-bottom">
-            Have an account? <Link to="/login">Login</Link>.
+            Have an account? <Link to="/commerce/login">Login</Link>.
           </div>
         </div>
       </div>

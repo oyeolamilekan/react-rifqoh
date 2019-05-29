@@ -19,10 +19,10 @@ class Index extends Component {
   componentDidUpdate(prevProps) {
     const {
       match: {
-        params: { cat }
+        params: { slug }
       }
     } = this.props;
-    if (prevProps.match.params.cat !== cat) {
+    if (prevProps.match.params.slug !== slug) {
       this.getProducts();
     } else {
       Progress.hide();
@@ -35,8 +35,14 @@ class Index extends Component {
   }
 
   getProducts() {
-    this.props.getProducts(this.props.match.params);
-    this.props.getShopInfo(this.props.match.params);
+    const { slug } = this.props.match.params;
+    let shop_data = {
+      slug: this.props.shopName,
+      cat: slug !== "" ? slug : "index",
+      history: this.props.history
+    };
+    this.props.getProducts(shop_data);
+    this.props.getShopInfo(this.props.shopName, this.props.history);
   }
 
   trackScrolling = () => {
@@ -86,7 +92,8 @@ const mapStateToProps = state => ({
   products: state.products.products,
   loading: state.products.loading,
   nextUrl: state.products.nextUrl,
-  nextLoading: state.products.nextLoading
+  nextLoading: state.products.nextLoading,
+  shopName: state.products.shopName
 });
 export default connect(
   mapStateToProps,

@@ -22,7 +22,7 @@ class ShopNav extends Component {
           <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-white">
               <NavLink
-                to={`/${slug}/store/index/`}
+                to={`/`}
                 className="navbar-brand"
                 onClick={clicker}
               >
@@ -59,12 +59,11 @@ class ShopNav extends Component {
                   >
                     <NavLink
                       exact
-                      to={`/${slug}/store/index/`}
+                      to='/'
                       activeClassName={`active`}
                       className="nav-link"
                     >
-                      <i className="uil uil-home-alt" />
-                      Home
+                      <i className="fas fa-home" /> Home
                     </NavLink>
                   </li>
                   <li
@@ -74,12 +73,11 @@ class ShopNav extends Component {
                   >
                     <NavLink
                       exact
-                      to={`/${slug}/store/trending`}
+                      to='/trending'
                       activeClassName={`active`}
                       className="nav-link"
                     >
-                      <i className="uil uil-home-alt" />
-                      Trending
+                      <i className="fas fa-chart-line" /> Trending
                     </NavLink>
                   </li>
                   <li
@@ -88,7 +86,7 @@ class ShopNav extends Component {
                     data-target=".navbar-collapse.show"
                   >
                     <div className="mr-auto d-none d-lg-block d-xl-block">
-                      <Search shop_slug={slug}/>
+                      <Search shop_slug={slug} />
                     </div>
                   </li>
                 </ul>

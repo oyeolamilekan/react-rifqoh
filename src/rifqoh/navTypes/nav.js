@@ -85,7 +85,7 @@ class Navigation extends Component {
                   className="nav-link"
                   onClick={clicker}
                 >
-                  <i className="uil uil-home-alt" />
+                <i className="fas fa-home"></i>
                   Home
                 </NavLink>
               </li>
