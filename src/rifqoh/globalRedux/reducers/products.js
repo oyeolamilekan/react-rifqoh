@@ -7,7 +7,8 @@ import {
   SEARCH_PRODUCTS
 } from "../actions/types.js";
 
-const shopName = localStorage.getItem("shopName")
+const parsedData = window.location.host.split(".");
+const shopName = parsedData[0];
 const initialState = {
   products: [],
   shop_info: {},
