@@ -11,6 +11,7 @@ export default class EditInfo extends Component {
     name: "",
     logo: "",
     logoName: "",
+    phoneNumber: "",
     address: "",
     description: "",
     loading: true,
@@ -29,10 +30,12 @@ export default class EditInfo extends Component {
         }
       })
       .then(res => {
+        console.log(res.data);
         this.setState({
           name: res.data.title,
           address: res.data.address,
           description: res.data.description,
+          phoneNumber: res.data.phone_number,
           loading: false
         });
       })
@@ -71,7 +74,7 @@ export default class EditInfo extends Component {
 
     // Stop the form from submitting
     // Get the data from the form state.
-    const { name, logo, address, description } = this.state;
+    const { name, logo, address, description, phoneNumber } = this.state;
 
     // Create form data object
     const data = new FormData();
@@ -79,6 +82,7 @@ export default class EditInfo extends Component {
     data.append("logo", logo);
     data.append("address", address);
     data.append("description", description);
+    data.append("phoneNumber", phoneNumber);
 
     // Send a post request to the server with
     // needed information
@@ -106,7 +110,7 @@ export default class EditInfo extends Component {
 
   render() {
     const shopName = localStorage.getItem("shopName");
-    const { name, address, description, loading, logoName, error } = this.state;
+    const { name, address, description, loading, logoName, error, phoneNumber } = this.state;
     return (
       <div>
         <Nav name={shopName} />
@@ -136,6 +140,18 @@ export default class EditInfo extends Component {
                       name="name"
                       value={name}
                       disabled
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      placeholder="Phone number"
+                      onChange={this.handleChange}
+                      name="phoneNumber"
+                      value={phoneNumber}
                     />
                   </div>
                   <div className="form-group">
