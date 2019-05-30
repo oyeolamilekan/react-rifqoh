@@ -7,6 +7,17 @@ import { withRouter } from "react-router";
 
 class CommerceNav extends Component {
 
+  createShopUrl = () => {
+    const slug = localStorage.getItem("shopSlug");
+    const pathname = window.location.host;
+    let shopUrl;
+    if (pathname.includes('www')){
+      shopUrl = pathname.replace('www',slug);
+    } else {
+      shopUrl = `${slug}.${pathname}`
+    }
+    return 'http://'+shopUrl;
+  }
   // Logout functionality for the nav
   logout = event => {
     event.preventDefault();
@@ -17,7 +28,6 @@ class CommerceNav extends Component {
   render() {
     const username = localStorage.getItem("username");
     const logo = localStorage.getItem("logo");
-    const slug = localStorage.getItem("shopSlug");
     const shopName = localStorage.getItem("shopName");
     return (
       <div>
@@ -87,13 +97,13 @@ class CommerceNav extends Component {
                     Hi, {username}.
                   </button>
                   <div className="dropdown-menu dropdown-menu-right">
-                    <Link
-                      to={`/${slug}/store/index/`}
+                    <a
+                      href={`${this.createShopUrl()}`}
                       className="dropdown-item"
                       target="_blank"
                     >
                       GO TO STORE
-                    </Link>
+                    </a>
                     <Link
                       to='/'
                       onClick={this.logout}
