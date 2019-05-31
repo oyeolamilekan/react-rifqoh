@@ -49,7 +49,7 @@ class Index extends Component {
     const wrappedElement = document.getElementById("root");
     if (this.isBottom(wrappedElement)) {
       this.loadMore();
-      alert('at the bottom')
+      alert("at the bottom");
     }
   };
 
@@ -73,15 +73,17 @@ class Index extends Component {
           <div>
             <ShopNav />
             {products.length > 0 ? (
-              <ProductDetails results={products} />
+              <div>
+                <ProductDetails results={products} />
+                <div className="text-center">
+                  {nextLoading ? <MiniLoading /> : ""}
+                </div>
+              </div>
             ) : (
               <div className="text-center mt-4">
                 <h1> No products available</h1>
               </div>
             )}
-            <div className="text-center">
-              {nextLoading ? <MiniLoading /> : ""}
-            </div>
           </div>
         )}
       </div>
