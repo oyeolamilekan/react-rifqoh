@@ -35,6 +35,7 @@ export const getProducts = ({ slug, cat, history }) => dispatch => {
         payload: res.data.results,
         nextUrl: res.data.next ? res.data.next.replace(url, "") : ""
       });
+      console.log(res.data.next);
     })
     .catch(() => history.push("/404"));
 };
