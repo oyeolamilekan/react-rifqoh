@@ -47,7 +47,7 @@ class Index extends Component {
   }
 
   trackScrolling = () => {
-    const wrappedElement = document.getElementById("root");
+    const wrappedElement = document.getElementById("commerce");
     if (this.isBottom(wrappedElement)) {
       this.loadMore();
       alert("at the bottom");
@@ -65,7 +65,7 @@ class Index extends Component {
   render() {
     const { products, loading, nextLoading } = this.props;
     return (
-      <div className="commerce-container">
+      <div className="commerce-container" id="commerce">
         {loading ? (
           <div className="mt-5 text-center">
             <h1>Loading</h1>
