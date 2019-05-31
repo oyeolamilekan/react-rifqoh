@@ -13,11 +13,12 @@ import { connect } from "react-redux";
 
 class Index extends Component {
   componentDidMount() {
+    document.addEventListener("scroll", this.trackScrolling);
     this.getProducts();
-    document.addEventListener('scroll', this.trackScrolling);
   }
 
   componentDidUpdate(prevProps) {
+    document.addEventListener("scroll", this.trackScrolling);
     const {
       match: {
         params: { slug }
@@ -28,7 +29,6 @@ class Index extends Component {
     } else {
       Progress.hide();
     }
-    document.addEventListener("scroll", this.trackScrolling);
   }
 
   componentWillUnmount() {
@@ -50,7 +50,6 @@ class Index extends Component {
     const wrappedElement = document.getElementById("commerce");
     if (this.isBottom(wrappedElement)) {
       this.loadMore();
-      alert("at the bottom");
     }
   };
 
@@ -74,14 +73,18 @@ class Index extends Component {
           <div>
             <ShopNav />
             {products.length > 0 ? (
-              <div>
-                <ProductDetails results={products} />
-                {nextLoading ? <div className="text-center"><MiniLoading/></div>:""}
-              </div>
+              <ProductDetails results={products} />
             ) : (
               <div className="text-center mt-4">
                 <h1> No products available</h1>
               </div>
+            )}
+            {nextLoading ? (
+              <div className="text-center m-0">
+                <MiniLoading />
+              </div>
+            ) : (
+              ""
             )}
           </div>
         )}
