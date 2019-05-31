@@ -50,6 +50,7 @@ export const getMoreProducts = nextUrl => dispatch => {
           payload: res.data.results,
           nextUrl: res.data.next !== null ? res.data.next.replace(url, "") : ""
         });
+        console.log(res.data.next);
       })
       .catch(e => console.log(`${e}`));
   }
