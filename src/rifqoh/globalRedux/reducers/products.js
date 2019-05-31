@@ -33,6 +33,7 @@ export default function(state = initialState, action) {
         products: action.payload,
         nextUrl: action.nextUrl,
         loading: false,
+        nextLoading: action.nextUrl === "" ? false : true
       };
     case MORE_PRODUCTS:
       return {
@@ -47,6 +48,7 @@ export default function(state = initialState, action) {
         products: action.payload,
         nextUrl: action.nextUrl,
         loading: false,
+        nextLoading: action.nextUrl === "" ? false : true
       };
     case MORE_TRENDING_PRODUCTS:
       return {

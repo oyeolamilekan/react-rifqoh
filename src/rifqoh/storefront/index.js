@@ -49,6 +49,7 @@ class Index extends Component {
     const wrappedElement = document.getElementById("root");
     if (this.isBottom(wrappedElement)) {
       this.loadMore();
+      alert('at the bottom')
     }
   };
 
