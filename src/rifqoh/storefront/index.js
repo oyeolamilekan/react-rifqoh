@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 class Index extends Component {
   componentDidMount() {
     this.getProducts();
+    document.addEventListener('scroll', this.trackScrolling);
   }
 
   componentDidUpdate(prevProps) {
