@@ -76,9 +76,6 @@ class Index extends Component {
             {products.length > 0 ? (
               <div>
                 <ProductDetails results={products} />
-                <div className="text-center">
-                  {nextLoading ? <MiniLoading /> : ""}
-                </div>
               </div>
             ) : (
               <div className="text-center mt-4">
