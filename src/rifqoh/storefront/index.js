@@ -59,6 +59,7 @@ class Index extends Component {
   };
 
   isBottom(el) {
+    console.log(el.getBoundingClientRect().bottom, window.innerHeight)
     return el.getBoundingClientRect().bottom <= window.innerHeight;
   }
 
