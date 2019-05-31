@@ -47,6 +47,7 @@ class Index extends Component {
   }
 
   trackScrolling = () => {
+    console.log('this is scrolling')
     const wrappedElement = document.getElementById("commerce");
     if (this.isBottom(wrappedElement)) {
       this.loadMore();
