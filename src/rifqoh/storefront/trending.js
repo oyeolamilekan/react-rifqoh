@@ -13,13 +13,11 @@ import { connect } from "react-redux";
 
 class Trending extends Component {
   componentDidMount() {
-    document.addEventListener("scroll", this.trackScrolling);
     this.getProducts();
+    document.addEventListener("scroll", this.trackScrolling);
   }
 
   componentDidUpdate(prevProps) {
-    document.addEventListener("scroll", this.trackScrolling);
-
     const {
       match: {
         params: { slug }
@@ -30,6 +28,7 @@ class Trending extends Component {
     } else {
       Progress.hide();
     }
+    document.addEventListener("scroll", this.trackScrolling);
   }
 
   componentWillUnmount() {
