@@ -66,7 +66,7 @@ class CommerceNav extends Component {
                   activeClassName="active"
                   className="nav-link"
                 >
-                  Tags
+                  <i className="fas fa-tags" /> Tags
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -76,7 +76,7 @@ class CommerceNav extends Component {
                   activeClassName="active"
                   className="nav-link"
                 >
-                  Products
+                  <i className="fas fa-shopping-bag" /> Products
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -86,7 +86,7 @@ class CommerceNav extends Component {
                   activeClassName="active"
                   className="nav-link"
                 >
-                  Edit
+                  <i className="far fa-edit" /> Edit
                 </NavLink>
               </li>
             </ul>
@@ -107,27 +107,27 @@ class CommerceNav extends Component {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      GO TO STORE
+                      <i className="fas fa-store-alt" /> GO TO STORE
                     </a>
                     <span
                       className="dropdown-item pointer"
                       data-toggle="modal"
                       data-target="#feedback"
                     >
-                      SEND FEEDBACK
+                      <i className="fas fa-comment-alt" /> SEND FEEDBACK
                     </span>
                     <Link
                       to="/"
                       onClick={this.logout}
                       className="dropdown-item"
                     >
-                      Log out
+                      <i className="fas fa-sign-out-alt" /> Log out
                     </Link>
                     <Link
                       to="/commerce/change_password"
                       className="dropdown-item"
                     >
-                      Change Password
+                      <i className="fas fa-lock" /> Change Password
                     </Link>
                   </div>
                 </div>

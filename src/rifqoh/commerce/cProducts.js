@@ -195,7 +195,7 @@ class cProducts extends Component {
                                   data-toggle="modal"
                                   data-target="#editProduct"
                                 >
-                                  Edit Product
+                                  <i className="far fa-edit" /> Edit Product
                                 </span>
                                 <span
                                   className="dropdown-item pointer"
@@ -203,7 +203,8 @@ class cProducts extends Component {
                                   data-target="#deleteProduct"
                                   onClick={() => this.deleteProducts(item)}
                                 >
-                                  Delete product
+                                  <i className="far fa-trash-alt" /> Delete
+                                  product
                                 </span>
                               </div>
                             </div>
@@ -341,7 +342,7 @@ class cProducts extends Component {
           data-toggle="modal"
           data-target="#myModal"
         >
-          Add Product
+          <i className="fas fa-plus" /> Add Product
         </span>
         {/* End Modal btn */}
       </div>
