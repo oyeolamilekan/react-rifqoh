@@ -10,7 +10,7 @@ import React, { Component } from "react";
 
 import Progress from "react-progress-2";
 import { connect } from "react-redux";
-import { searchProducts } from "../globalRedux/actions/products";
+import { searchProducts } from "../storeRedux/actions/products";
 import { withRouter } from "react-router";
 
 class Search extends Component {

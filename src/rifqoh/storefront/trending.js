@@ -3,7 +3,7 @@ import {
   getMoreTrendingProducts,
   getShopInfo,
   getTrendingProducts
-} from "../globalRedux/actions/products";
+} from "../storeRedux/actions/products";
 
 import MiniLoading from "../zgraves/miniLoading";
 import ProductDetails from "./ProductDetail";
@@ -59,7 +59,7 @@ class Trending extends Component {
   };
 
   isBottom(el) {
-    return el.getBoundingClientRect().bottom <= window.innerHeight;
+    return parseInt(el.getBoundingClientRect().bottom) <= window.innerHeight;
   }
 
   render() {

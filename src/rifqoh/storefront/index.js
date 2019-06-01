@@ -3,7 +3,7 @@ import {
   getMoreProducts,
   getProducts,
   getShopInfo
-} from "../globalRedux/actions/products";
+} from "../storeRedux/actions/products";
 
 import MiniLoading from "../zgraves/miniLoading";
 import ProductDetails from "./ProductDetail";
@@ -59,7 +59,6 @@ class Index extends Component {
   };
 
   isBottom(el) {
-    console.log(el.getBoundingClientRect().bottom, window.innerHeight)
     return parseInt(el.getBoundingClientRect().bottom) <= window.innerHeight;
   }
 

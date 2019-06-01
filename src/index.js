@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
 import registerServiceWorker from "./registerServiceWorker";
-import store from "./rifqoh/globalRedux/store";
+import store from "./rifqoh/storeRedux/store";
 
 const parsedData = window.location.host.split(".");
 if (parsedData.length === 3 - 1 || parsedData[0] === "www") {
