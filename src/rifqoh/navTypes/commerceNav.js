@@ -109,14 +109,13 @@ class CommerceNav extends Component {
                     >
                       GO TO STORE
                     </a>
-                    <a
-                      href="#"
-                      className="dropdown-item"
+                    <span
+                      className="dropdown-item pointer"
                       data-toggle="modal"
                       data-target="#feedback"
                     >
                       SEND FEEDBACK
-                    </a>
+                    </span>
                     <Link
                       to="/"
                       onClick={this.logout}
@@ -146,17 +145,9 @@ class CommerceNav extends Component {
                 </button>
               </div>
 
-              <div className="modal-body"><Feeback/></div>
-
-              {/* <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-              </div> */}
+              <div className="modal-body">
+                <Feeback />
+              </div>
             </div>
           </div>
         </div>
