@@ -23,7 +23,7 @@ export default class tagsProduct extends Component {
   };
 
   componentDidMount() {
-    console.log('hello')
+    console.log("hello");
     axios
       .get(`${url}/api/catergory_list/`, {
         headers: {
@@ -75,7 +75,7 @@ export default class tagsProduct extends Component {
         });
       })
       .catch(() => {
-        console.log('kii')
+        console.log("kii");
         this.setState({
           sent: false,
           error: true,
@@ -123,7 +123,7 @@ export default class tagsProduct extends Component {
               <div className="text-center">
                 There an error with your internet connection
               </div>
-            ): (
+            ) : (
               <div className="text-center">
                 No tags added, kindly add more tags.
               </div>
@@ -216,7 +216,7 @@ export default class tagsProduct extends Component {
           data-toggle="modal"
           data-target="#myModal"
         >
-          Add Tags
+          <i className="fas fa-plus" /> Add Tags
         </a>
         {/* End button */}
       </div>
