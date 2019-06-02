@@ -32,7 +32,6 @@ export default function Home() {
 
   return (
     <div>
-      
       <nav className="navbar navbar-expand-sm bg-light navbar-light">
         <NavLink exact to="/" activeClassName="active" className="nav-link">
           <img src={Logo} alt="logo" className="logo" />
@@ -147,33 +146,33 @@ export default function Home() {
           <br />
           <div className="row">
             <div className="col-md-4">
-              <h5>
-                <i className="uil uil-cloud-check s-30" />
-              </h5>
-              <h5>Instant upgrades</h5>
+              <h1>
+                <i className="fas fa-box-open" />
+              </h1>
+              <h5>Built for Merchants</h5>
               <p>
-                All Shopstack updates are automatic, so you'll receive the
-                latest features immediately, without any hassle.
+                We understand your needs and have tailored Selar to make your
+                more successful with your sales.
               </p>
             </div>
             <div className="col-md-4">
-              <h5>
-                <i className="uil uil-padlock s-30" />
-              </h5>
-              <h5>SSL certificate</h5>
+              <h1>
+                <i className="fas fa-stopwatch" />
+              </h1>
+              <h5>Setup a product page in 30 seconds</h5>
               <p>
                 Your online store includes a 256-bit SSL certificate to keep
                 your customers' information and business data secure.
               </p>
             </div>
             <div className="col-md-4">
-              <h5>
-                <i className="uil uil-clock s-30" />
-              </h5>
-              <h5>99.98% uptime.</h5>
+              <h1>
+                <i className="fas fa-tasks" />
+              </h1>
+              <h5>Product Management</h5>
               <p>
-                No need to worry about downtime with Shopstack, we work around
-                the clock to make sure your website is always online.
+                Share your store displaying all your products and we’ll let your
+                customers make purchases seamlessly.
               </p>
             </div>
           </div>
