@@ -35,7 +35,7 @@ export default class Lesson extends Component {
       });
   }
   render() {
-    const { videoList } = this.state;
+    const { videoList, loading } = this.state;
     return (
       <div>
         <Nav />
