@@ -79,26 +79,6 @@ class CommerceNav extends Component {
                   <i className="fas fa-shopping-bag" /> Products
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  exact
-                  to="/commerce/edit"
-                  activeClassName="active"
-                  className="nav-link"
-                >
-                  <i className="far fa-edit" /> Edit
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  exact
-                  to="/commerce/lessons/index"
-                  activeClassName="active"
-                  className="nav-link"
-                >
-                  <i className="fas fa-video" /> Tutorials
-                </NavLink>
-              </li>
             </ul>
             <ul className="navbar-nav ml-auto mr-5">
               <li className="nav-item">
@@ -111,6 +91,15 @@ class CommerceNav extends Component {
                     Hi, {username}.
                   </button>
                   <div className="dropdown-menu dropdown-menu-right">
+                    <Link to="/commerce/edit" className="dropdown-item">
+                      <i className="far fa-edit" /> Edit Profile
+                    </Link>
+                    <Link
+                      to="/commerce/lessons/index"
+                      className="dropdown-item"
+                    >
+                      <i className="fas fa-video" /> Tutorials
+                    </Link>
                     <a
                       href={`${this.createShopUrl()}`}
                       className="dropdown-item"
