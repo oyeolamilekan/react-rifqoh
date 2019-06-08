@@ -33,7 +33,6 @@ export default class AddProduct extends Component {
         this.setState({
           chossenTags: res.data.shop_categories
         });
-        console.log(res)
       })
       .catch(err => {
         this.setState({

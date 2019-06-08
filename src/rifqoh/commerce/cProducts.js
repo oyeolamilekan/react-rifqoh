@@ -37,7 +37,6 @@ class cProducts extends Component {
           isNext: res.data.next ? res.data.next.replace(url, "") : "",
           loading: false
         });
-        console.log(res.data.results);
       })
       .catch(() => {
         this.setState({

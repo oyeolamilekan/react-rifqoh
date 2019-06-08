@@ -115,7 +115,7 @@ export default class EditInfo extends Component {
       <div>
         <Nav name={shopName} />
         <div className="col-md-6 offset-md-3 mt-2">
-          <div className="bg-white p-4">
+          <div className="bg-white p-4 shadow rounded">
             {loading ? (
               <div className="text-center">
                 <Loading />

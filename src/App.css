@@ -484,8 +484,28 @@ a.float:hover {
   padding-bottom: 1rem;
   margin-top: -1px;
   overflow-x: auto;
-  color: rgba(255, 255, 255, .75);
+  color: rgba(255, 255, 255, 0.75);
   text-align: center;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Youtube Styling */
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

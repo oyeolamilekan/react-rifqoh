@@ -89,6 +89,16 @@ class CommerceNav extends Component {
                   <i className="far fa-edit" /> Edit
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                  exact
+                  to="/commerce/lessons/index"
+                  activeClassName="active"
+                  className="nav-link"
+                >
+                  <i className="fas fa-video" /> Tutorials
+                </NavLink>
+              </li>
             </ul>
             <ul className="navbar-nav ml-auto mr-5">
               <li className="nav-item">
@@ -135,7 +145,7 @@ class CommerceNav extends Component {
             </ul>
           </div>
         </nav>
-        <div class="modal" id="feedback">
+        <div className="modal" id="feedback">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
