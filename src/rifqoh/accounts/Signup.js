@@ -131,7 +131,7 @@ class SignUp extends Component {
               <div className="form-group">
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control form-control-lg"
                   id="InputName"
                   aria-describedby="emailHelp"
                   placeholder="Enter Name"
@@ -144,7 +144,7 @@ class SignUp extends Component {
               <div className="form-group">
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control form-control-lg"
                   id="InputEmail"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
@@ -157,7 +157,7 @@ class SignUp extends Component {
               <div className="form-group">
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control form-control-lg"
                   id="InputPassword1"
                   placeholder="Password"
                   name="password"

@@ -87,7 +87,7 @@ export default class EditInfo extends Component {
     // Send a post request to the server with
     // needed information
     axios
-      .post(`${url}/api/save_info/`, data, {
+      .put(`${url}/api/save_info/`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${Token()}`

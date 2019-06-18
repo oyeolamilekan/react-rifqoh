@@ -13,6 +13,8 @@ import Lesson from "../commerce/Lessons";
 import Login from "../accounts/Login";
 import Logout from "../accounts/Logout";
 import NotFound from "../errorPages/404";
+import PasswordResetChange from "../accounts/PasswordResetChange";
+import PasswordResetForm from "../accounts/PasswordResetForm";
 import { PrivateRoute } from "../utils/utils";
 import React from "react";
 import SignUp from "../accounts/Signup";
@@ -27,6 +29,11 @@ const Main = () => (
       <Route path="/commerce/login" component={Login} />
       <Route path="/commerce/logout" component={Logout} />
       <Route path="/commerce/signup" component={SignUp} />
+      <Route path="/commerce/reset" component={PasswordResetForm} />
+      <Route
+        path="/commerce/reset-change/:token"
+        component={PasswordResetChange}
+      />
       <PrivateRoute
         path="/commerce/change_password"
         component={ChangePassword}

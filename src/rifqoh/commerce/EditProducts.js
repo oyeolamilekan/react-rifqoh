@@ -120,7 +120,7 @@ export default class EditProducts extends Component {
     // Send a post request to the server with
     // needed information
     axios
-      .post(`${url}/api/edit_products/`, data, {
+      .put(`${url}/api/edit_products/`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${Token()}`
@@ -236,7 +236,7 @@ export default class EditProducts extends Component {
                 required
               />
             </div>
-            <label>Product image</label>
+            <label>Product image </label>
             <input
               type="file"
               name="file"

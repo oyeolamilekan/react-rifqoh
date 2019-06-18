@@ -107,7 +107,7 @@ class Login extends Component {
               <div className="form-group">
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control form-control-lg"
                   id="InputUsername"
                   aria-describedby="helpUsername"
                   placeholder="Username"
@@ -120,7 +120,7 @@ class Login extends Component {
               <div className="form-group">
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control form-control-lg"
                   id="InputPassword"
                   placeholder="Password"
                   name="password"
@@ -155,6 +155,8 @@ class Login extends Component {
           </div>
           <div className="p-4 bg-auth-container m-0 text-center rounded-bottom">
             Don't have an account? <Link to="/commerce/signup">Sign up</Link>.
+            <br/>
+            Forgot your password <Link to="/commerce/reset">click here.</Link>
           </div>
         </div>
       </div>
