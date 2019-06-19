@@ -140,7 +140,7 @@ class SignUp extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="mt-4" />
+              <div className="mt-2" />
               <div className="form-group">
                 <input
                   type="email"
@@ -153,7 +153,7 @@ class SignUp extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="mt-4" />
+              <div className="mt-2" />
               <div className="form-group">
                 <input
                   type="password"
@@ -166,7 +166,7 @@ class SignUp extends Component {
                 />
               </div>
 
-              <div className="mt-4" />
+              <div className="mt-2" />
               <div className="btn-submit">
                 <button
                   type="submit"

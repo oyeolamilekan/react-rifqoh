@@ -17,7 +17,7 @@ import url from "../config/url";
 
 class Login extends Component {
   state = {
-    username: "",
+    email: "",
     password: "",
     shop_name: "",
     error: false
@@ -42,18 +42,26 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { password, username } = this.state;
+    const { password, email } = this.state;
     this.setState({
       loading: true
     });
     axios
       .post(`${url}/api/login/`, {
-        username: username,
+        email: email,
         password: password
       })
       .then(res => {
         console.log(res.data);
-        const { token, name, is_commerce, is_admin, shop_name, shop_logo, shop_slug } = res.data;
+        const {
+          token,
+          name,
+          is_commerce,
+          is_admin,
+          shop_name,
+          shop_logo,
+          shop_slug
+        } = res.data;
         const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
         localStorage.setItem("username", name);
         localStorage.setItem("is_commerce", is_commerce);
@@ -110,13 +118,13 @@ class Login extends Component {
                   className="form-control"
                   id="InputUsername"
                   aria-describedby="helpUsername"
-                  placeholder="Username"
+                  placeholder="Email"
                   onChange={this.handleChange}
-                  name="Email"
+                  name="email"
                   required
                 />
               </div>
-              <div className="mt-4" />
+              <div className="mt-2" />
               <div className="form-group">
                 <input
                   type="password"
@@ -128,7 +136,7 @@ class Login extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="btn-submit mt-4">
+              <div className="btn-submit mt-2">
                 <button
                   type="submit"
                   className="btn btn-block btn-dark pl-3 btn-shadow-dark"
@@ -155,7 +163,7 @@ class Login extends Component {
           </div>
           <div className="p-4 bg-auth-container m-0 text-center rounded-bottom">
             Don't have an account? <Link to="/commerce/signup">Sign up</Link>.
-            <br/>
+            <br />
             Forgot your password <Link to="/commerce/reset">click here.</Link>
           </div>
         </div>
