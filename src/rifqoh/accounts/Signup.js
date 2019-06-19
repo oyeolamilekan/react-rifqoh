@@ -131,7 +131,7 @@ class SignUp extends Component {
               <div className="form-group">
                 <input
                   type="text"
-                  className="form-control form-control-lg"
+                  className="form-control"
                   id="InputName"
                   aria-describedby="emailHelp"
                   placeholder="Enter Name"
@@ -144,7 +144,7 @@ class SignUp extends Component {
               <div className="form-group">
                 <input
                   type="email"
-                  className="form-control form-control-lg"
+                  className="form-control"
                   id="InputEmail"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
@@ -157,7 +157,7 @@ class SignUp extends Component {
               <div className="form-group">
                 <input
                   type="password"
-                  className="form-control form-control-lg"
+                  className="form-control"
                   id="InputPassword1"
                   placeholder="Password"
                   name="password"
@@ -170,7 +170,7 @@ class SignUp extends Component {
               <div className="btn-submit">
                 <button
                   type="submit"
-                  className="btn btn-block btn-dark p-3 btn-shadow-dark"
+                  className="btn btn-block btn-dark pl-3 btn-shadow-dark"
                   disabled={loading ? true : false}
                 >
                   {loading ? (

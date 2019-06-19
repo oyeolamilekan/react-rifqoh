@@ -135,7 +135,7 @@ export default class ChangePassword extends Component {
               </div>
               <button
                 type="submit"
-                className="btn btn-block btn-dark p-3 btn-shadow-dark"
+                className="btn btn-block btn-dark pl-3 btn-shadow-dark"
                 disabled={loading ? true : false}
               >
                 {loading ? (

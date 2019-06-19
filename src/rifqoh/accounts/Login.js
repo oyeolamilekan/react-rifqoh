@@ -107,7 +107,7 @@ class Login extends Component {
               <div className="form-group">
                 <input
                   type="email"
-                  className="form-control form-control-lg"
+                  className="form-control"
                   id="InputUsername"
                   aria-describedby="helpUsername"
                   placeholder="Username"
@@ -120,7 +120,7 @@ class Login extends Component {
               <div className="form-group">
                 <input
                   type="password"
-                  className="form-control form-control-lg"
+                  className="form-control"
                   id="InputPassword"
                   placeholder="Password"
                   name="password"
@@ -131,7 +131,7 @@ class Login extends Component {
               <div className="btn-submit mt-4">
                 <button
                   type="submit"
-                  className="btn btn-block btn-dark p-3 btn-shadow-dark"
+                  className="btn btn-block btn-dark pl-3 btn-shadow-dark"
                   disabled={loading ? true : false}
                 >
                   {loading ? (
