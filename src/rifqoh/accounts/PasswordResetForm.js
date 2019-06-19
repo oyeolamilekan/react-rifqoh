@@ -22,8 +22,8 @@ export default class PasswordResetForm extends Component {
 
   handleSubmit = event => {
     this.setState({
-      loading:true
-    })
+      loading: true
+    });
     event.preventDefault();
     const { email } = this.state;
     axios
@@ -39,7 +39,7 @@ export default class PasswordResetForm extends Component {
         this.setState({
           msg: "Email does not exist",
           alert: true,
-          loading:false
+          loading: false
         });
       });
   };
@@ -86,6 +86,7 @@ export default class PasswordResetForm extends Component {
                   aria-describedby="emailHelp"
                   placeholder="Enter Your Email"
                   name="email"
+                  disabled={loading ? true : false}
                   required
                   onChange={this.handleChange}
                 />
