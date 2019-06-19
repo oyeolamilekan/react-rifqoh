@@ -21,22 +21,25 @@ export default class PasswordResetForm extends Component {
   };
 
   handleSubmit = event => {
+    this.setState({
+      loading:true
+    })
     event.preventDefault();
     const { email } = this.state;
     axios
       .post(`${url}/api/reset/`, { email: email })
       .then(res => {
-        console.log(res);
         this.setState({
           msg: res.data.msg,
-          alert: true
+          alert: true,
+          loading: false
         });
       })
       .catch(err => {
-        console.log(err);
         this.setState({
           msg: "Email does not exist",
-          alert: true
+          alert: true,
+          loading:false
         });
       });
   };
