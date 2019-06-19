@@ -22,8 +22,16 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     Boolean(localStorage.getItem('is_commerce')) && localStorage.getItem("username") !== "undefined"
       ? <Component {...props} />
-      : <Redirect to={`/login?redirect=${props.location.pathname}`}/>
+      : <Redirect to={`/commerce/login?redirect=${props.location.pathname}`}/>
   )} />
 )
 
+export const UnAuthRoute = ({ component: Component, ...rest }) => (
+  
+  <Route {...rest} render={(props) => (
+    !Boolean(localStorage.getItem('is_commerce')) && localStorage.getItem("username") === null
+      ? <Component {...props} />
+      : <Redirect to={`/commerce/products`}/>
+  )} />
+)
 export default Token;

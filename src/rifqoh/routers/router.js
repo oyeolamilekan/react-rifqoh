@@ -4,6 +4,7 @@
  * This source code is free
  */
 
+import { PrivateRoute, UnAuthRoute } from "../utils/utils";
 import { Route, Switch } from "react-router-dom";
 
 import ChangePassword from "../accounts/ChangePassword";
@@ -15,7 +16,6 @@ import Logout from "../accounts/Logout";
 import NotFound from "../errorPages/404";
 import PasswordResetChange from "../accounts/PasswordResetChange";
 import PasswordResetForm from "../accounts/PasswordResetForm";
-import { PrivateRoute } from "../utils/utils";
 import React from "react";
 import SignUp from "../accounts/Signup";
 import cProducts from "../commerce/cProducts";
@@ -26,9 +26,9 @@ const Main = () => (
   <div className="con">
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/commerce/login" component={Login} />
+      <UnAuthRoute path="/commerce/login" component={Login} />
       <Route path="/commerce/logout" component={Logout} />
-      <Route path="/commerce/signup" component={SignUp} />
+      <UnAuthRoute path="/commerce/signup" component={SignUp} />
       <Route path="/commerce/reset" component={PasswordResetForm} />
       <Route
         path="/commerce/reset-change/:token"
