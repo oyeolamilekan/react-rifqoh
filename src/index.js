@@ -14,7 +14,11 @@ import registerServiceWorker from "./registerServiceWorker";
 import store from "./rifqoh/storeRedux/store";
 
 const parsedData = window.location.host.split(".");
-if (parsedData.length === 3 - 1 || parsedData[0] === "www" || /\d/.test(window.location.host)) {
+if (
+  parsedData.length === 3 - 1 ||
+  parsedData[0] === "www" ||
+  /\d/.test(window.location.host)
+) {
   ReactDOM.render(
     <BrowserRouter>
       <App />
@@ -22,7 +26,7 @@ if (parsedData.length === 3 - 1 || parsedData[0] === "www" || /\d/.test(window.l
     document.getElementById("root")
   );
 } else {
-  localStorage.setItem('shopName', parsedData[0]);
+  localStorage.setItem("shopName", parsedData[0]);
   ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
