@@ -1,7 +1,9 @@
 /**
  * Copyright (c) 2018-present, A68, Inc.
  *
- * This source code is free
+ * This route handles the routing of the app.
+ * checks if the user wants to view the merchant shop or
+ * the merchants wants to see its admin page.
  */
 
 import App from "./App";
@@ -14,10 +16,11 @@ import registerServiceWorker from "./registerServiceWorker";
 import store from "./rifqoh/storeRedux/store";
 
 const parsedData = window.location.host.split(".");
+const isIp = /\d/.test(window.location.host);
 if (
   parsedData.length === 3 - 1 ||
   parsedData[0] === "www" ||
-  /\d/.test(window.location.host)
+  isIp
 ) {
   ReactDOM.render(
     <BrowserRouter>
