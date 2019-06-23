@@ -14,7 +14,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import store from "./rifqoh/storeRedux/store";
 
 const parsedData = window.location.host.split(".");
-if (parsedData.length === 3 - 1 || parsedData[0] === "www") {
+if (parsedData.length === 3 - 1 || parsedData[0] === "www" || /\d/.test(window.location.host)) {
   ReactDOM.render(
     <BrowserRouter>
       <App />
