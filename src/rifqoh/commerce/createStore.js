@@ -61,6 +61,7 @@ class createShop extends Component {
       isLoading: true
     });
     const { shopName, shopCategory, phoneNumber } = this.state;
+    // this is it
     axios
       .post(
         `${url}/api/create_shop/`,
