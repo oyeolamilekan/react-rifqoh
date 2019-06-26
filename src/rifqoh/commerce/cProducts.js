@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import AddProduct from "./AddProduct";
 import EditProducts from "./EditProducts";
+import { Link } from "react-router-dom";
 import Loading from "react-spinners/BeatLoader";
 import Nav from "../navTypes/commerceNav";
 import Token from "../utils/utils";
@@ -188,6 +189,12 @@ class cProducts extends Component {
                                 Actions
                               </span>
                               <div className="dropdown-menu dropdown-menu-left">
+                                <Link
+                                  className="dropdown-item pointer"
+                                  to={`/commerce/product-analytics/${item.id}`}
+                                >
+                                  <i className="far fa-chart-bar"/> Analytics
+                                </Link>
                                 <span
                                   className="dropdown-item pointer"
                                   onClick={() => this.editProducts(item)}

@@ -16,7 +16,8 @@ import registerServiceWorker from "./registerServiceWorker";
 import store from "./rifqoh/storeRedux/store";
 
 const parsedData = window.location.host.split(".");
-const isIp = /\d/.test(window.location.host);
+const isIp = /\d/.test(parsedData[0][0]);
+console.log(parsedData[0]);
 if (
   parsedData.length === 3 - 1 ||
   parsedData[0] === "www" ||

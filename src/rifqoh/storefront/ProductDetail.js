@@ -7,6 +7,8 @@
 import React, { Component } from "react";
 
 import ProductModal from "./ProductModal";
+import axios from "axios";
+import url from "../config/url";
 
 class ProductDetail extends Component {
   state = {
@@ -28,12 +30,19 @@ class ProductDetail extends Component {
     // console.log(results);
   }
 
+  create_analytics = id => {
+    axios.get(`${url}/api/create_analytics_product/${id}/`).then(res => {
+      console.log(res);
+    });
+  };
+  
   // Pass the data needed to edit the product
   detailProducts = data => {
     this.setState({
       detailData: data,
       clicked: true
     });
+    this.create_analytics(data.id);
   };
 
   componentDidUpdate(prevProps, prevState, snapShot) {
@@ -48,7 +57,7 @@ class ProductDetail extends Component {
         <div className="row">
           {results.map((item, key) => (
             <div
-              className="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+              className="col-lg-3 col-md-5 col-sm-6 col-xs-12"
               key={`${item.id}-${item.name}-${key}`}
             >
               <span

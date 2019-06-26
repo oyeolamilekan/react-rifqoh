@@ -18,6 +18,8 @@ export default class ProductModal extends Component {
     });
   }
 
+  
+  
   componentDidUpdate(prevProps) {
     const { product } = this.props;
     if (prevProps.product !== product) {
@@ -27,7 +29,7 @@ export default class ProductModal extends Component {
         description: product.description,
         productImage: product.image
       });
-    }
+    } 
   }
 
   render() {

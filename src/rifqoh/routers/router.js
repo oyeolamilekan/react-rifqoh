@@ -20,6 +20,7 @@ import React from "react";
 import SignUp from "../accounts/Signup";
 import cProducts from "../commerce/cProducts";
 import createShop from "../commerce/createStore";
+import productAnalytics from "../analytics/products";
 import tagsProduct from "../commerce/tagsProduct";
 
 const Main = () => (
@@ -43,6 +44,10 @@ const Main = () => (
       <PrivateRoute path="/commerce/edit" component={EditInfo} />
       <PrivateRoute path="/commerce/create/shop" component={createShop} />
       <PrivateRoute path="/commerce/lessons/:slug" component={Lesson} />
+      <PrivateRoute
+        path="/commerce/product-analytics/:slug"
+        component={productAnalytics}
+      />
       <Route path="" component={NotFound} />
     </Switch>
   </div>
