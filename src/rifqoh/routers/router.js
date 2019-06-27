@@ -21,6 +21,7 @@ import SignUp from "../accounts/Signup";
 import cProducts from "../commerce/cProducts";
 import createShop from "../commerce/createStore";
 import productAnalytics from "../analytics/products";
+import shopAnalytics from "../analytics/shop";
 import tagsProduct from "../commerce/tagsProduct";
 
 const Main = () => (
@@ -47,6 +48,10 @@ const Main = () => (
       <PrivateRoute
         path="/commerce/product-analytics/:slug"
         component={productAnalytics}
+      />
+      <PrivateRoute
+        path="/commerce/shop-analytics/:slug"
+        component={shopAnalytics}
       />
       <Route path="" component={NotFound} />
     </Switch>

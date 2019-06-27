@@ -35,7 +35,7 @@ class Index extends Component {
     document.removeEventListener("scroll", this.trackScrolling);
   }
 
-  getProducts() {
+  getProducts = () => {
     const { slug } = this.props.match.params;
     let shop_data = {
       slug: this.props.shopName,

@@ -7,10 +7,12 @@ import axios from "axios";
 import url from "../config/url";
 
 export default class Index extends Component {
+  
   state = {
     comments: [],
     loading: true
   };
+  
   componentDidMount() {
     const { objId, objType } = this.props;
 
@@ -25,8 +27,9 @@ export default class Index extends Component {
   }
 
   addComments = data => {
+    const { comments } = this.state;
     this.setState({
-      comments: [data, ...this.state.comments]
+      comments: [data, ...comments]
     });
   };
 

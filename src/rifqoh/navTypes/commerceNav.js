@@ -29,6 +29,7 @@ class CommerceNav extends Component {
     const username = localStorage.getItem("username");
     const logo = localStorage.getItem("logo");
     const shopName = localStorage.getItem("shopName");
+    const slug = localStorage.getItem("shopSlug");
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-white">
@@ -99,6 +100,12 @@ class CommerceNav extends Component {
                       className="dropdown-item"
                     >
                       <i className="fas fa-video" /> Tutorials
+                    </Link>
+                    <Link
+                      to={`/commerce/shop-analytics/${slug}`}
+                      className="dropdown-item"
+                    >
+                      <i className="fas fa-chart-bar" /> Analytics
                     </Link>
                     <a
                       href={`${this.createShopUrl()}`}

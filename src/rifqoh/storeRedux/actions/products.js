@@ -10,16 +10,21 @@ import {
 import axios from "axios";
 import url from "../../config/url";
 
+const create_shop_analytics = (id) => {
+  axios.get(`${url}/api/create_shop_analytics/${id}/`)
+}
+
 export const getShopInfo = (shopName, history) => dispatch => {
   axios
     .get(`${url}/api/shop_info/${shopName}/`)
     .then(res => {
-      const { shop_name, tags, logo, slug } = res.data.shop_info;
+      const { shop_name, tags, logo, slug, id } = res.data.shop_info;
       const shop_info = { shop_name, tags, logo, slug };
       dispatch({
         type: GET_SHOP_INFO,
         payload: shop_info
       });
+      create_shop_analytics(id);
     })
     .catch(() => history.push("/404"));
 };
