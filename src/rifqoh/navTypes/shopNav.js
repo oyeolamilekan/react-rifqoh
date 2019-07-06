@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import { Helmet } from "react-helmet";
 import MiniNavigation from "../utils/mininav";
 import { NavLink } from "react-router-dom";
 import Progress from "react-progress-2";
@@ -20,12 +21,13 @@ class ShopNav extends Component {
           ""
         ) : (
           <div>
+            <Helmet>
+              <meta charSet="utf-8" />
+              <title>{shop_name}</title>
+              <link rel="canonical" href={window.location} />
+            </Helmet>
             <nav className="navbar navbar-expand-lg navbar-light bg-white">
-              <NavLink
-                to={`/`}
-                className="navbar-brand"
-                onClick={clicker}
-              >
+              <NavLink to={`/`} className="navbar-brand" onClick={clicker}>
                 {logo ? (
                   <img src={logo} alt="logo" className="logo" />
                 ) : (
@@ -59,7 +61,7 @@ class ShopNav extends Component {
                   >
                     <NavLink
                       exact
-                      to='/'
+                      to="/"
                       activeClassName={`active`}
                       className="nav-link"
                     >
@@ -73,7 +75,7 @@ class ShopNav extends Component {
                   >
                     <NavLink
                       exact
-                      to='/trending'
+                      to="/trending"
                       activeClassName={`active`}
                       className="nav-link"
                     >

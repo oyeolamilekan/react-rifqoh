@@ -44,10 +44,10 @@ class Index extends Component {
     };
     this.props.getProducts(shop_data);
     this.props.getShopInfo(this.props.shopName, this.props.history);
-  }
+  };
 
   trackScrolling = () => {
-    console.log('this is scrolling')
+    console.log("this is scrolling");
     const wrappedElement = document.getElementById("commerce");
     if (this.isBottom(wrappedElement)) {
       this.loadMore();
