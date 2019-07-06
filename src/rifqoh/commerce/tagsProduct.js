@@ -99,7 +99,7 @@ export default class tagsProduct extends Component {
       <div>
         <Nav name={shopName} />
         <div className="col-md-6 offset-md-3 mt-2">
-          <div className="shadow p-4 mt-2 mb-3 bg-white rounded text-center">
+          <div className="p-4 mt-2 mb-3 bg-white rounded text-center">
             {loading ? (
               <div className="text-center">
                 <Loading />
@@ -110,7 +110,7 @@ export default class tagsProduct extends Component {
                   {shop_category.map((tags, index) => {
                     return (
                       <span
-                        className="bg-tags p-1 text-white rounded mr-2"
+                        className="bg-tags pl-3 pr-3 pt-1 pb-1 text-white rounded mr-2 h5 font-weight-light"
                         key={index}
                       >
                         {jsUcfirst(tags.name)}

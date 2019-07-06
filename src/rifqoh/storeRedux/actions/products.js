@@ -14,6 +14,11 @@ const create_shop_analytics = (id) => {
   axios.get(`${url}/api/create_shop_analytics/${id}/`)
 }
 
+const create_tags_analytics = (urlParam) => {
+  console.log(url);
+  axios.post(`${url}/api/create_tags_analytics/`,{url:urlParam})
+}
+
 export const getShopInfo = (shopName, history) => dispatch => {
   axios
     .get(`${url}/api/shop_info/${shopName}/`)
@@ -32,6 +37,7 @@ export const getShopInfo = (shopName, history) => dispatch => {
 export const getProducts = ({ slug, cat, history }) => dispatch => {
   // Check if a category is passed in.
   cat = cat === undefined ? "index" : cat;
+  create_tags_analytics(`/api/shop_product/${slug}/${cat}/`);
   axios
     .get(`${url}/api/shop_product/${slug}/${cat}/`)
     .then(res => {

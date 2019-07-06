@@ -20,7 +20,7 @@ export default class shopAnalytics extends Component {
         labels: day,
         datasets: [
           {
-            label: "Product clicks",
+            label: "Shop visits",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",
@@ -40,7 +40,8 @@ export default class shopAnalytics extends Component {
             pointHitRadius: 10,
             data: data_set
           }
-        ]
+        ],
+        height: 200
       };
       this.setState({ data });
     });
@@ -51,7 +52,8 @@ export default class shopAnalytics extends Component {
       <div>
         <Nav />
         <div className="p-3 bg-white m-2">
-          <Line data={data} />
+          
+            <Line data={data} />
         </div>
       </div>
     );

@@ -142,9 +142,9 @@ class cProducts extends Component {
     return (
       <div>
         <Nav />
-        <div className="pl-3 pr-3">
+        <div className="pl-2 pr-2">
           <div>
-            <div className="p-3 shadow mt-2 bg-white rounded mb-4 table-responsive">
+            <div className="p-3 mt-2 bg-white rounded mb-4 table-responsive">
               {loading ? (
                 <div className="text-center">
                   <Loading />{" "}
