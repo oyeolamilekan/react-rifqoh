@@ -28,7 +28,7 @@ export default function Products() {
         {products.length > 0 ? (
           products.map(items => <p>{items.name}</p>)
         ) : (
-          <p className="text-center">Loading</p>
+          <p className="text-center">No products clicked</p>
         )}
       </div>
     </div>
