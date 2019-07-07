@@ -10,7 +10,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 15px;
   background-color: #e5e7f1;
   min-height: 100%;
@@ -75,8 +75,8 @@ body {
   font-weight: bold;
 }
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
 }
 
 .navbar {
@@ -514,6 +514,10 @@ a.float:hover {
 canvas{
   width:auto;
   height:550px !important ;
+}
+
+.canvas-container > canvas{
+  height: 300px !important;
 }
 
 @media screen and (max-width: 479px) {

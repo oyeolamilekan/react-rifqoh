@@ -60,6 +60,16 @@ class CommerceNav extends Component {
 
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav mr-auto ml-2">
+            <li className="nav-item">
+                <NavLink
+                  exact
+                  to="/commerce/home"
+                  activeClassName="active"
+                  className="nav-link"
+                >
+                  <i className="fas fa-home" /> Home
+                </NavLink>
+              </li>
               <li className="nav-item">
                 <NavLink
                   exact
@@ -78,6 +88,16 @@ class CommerceNav extends Component {
                   className="nav-link"
                 >
                   <i className="fas fa-shopping-bag" /> Products
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  exact
+                  to="/commerce/give-away"
+                  activeClassName="active"
+                  className="nav-link"
+                >
+                  <i className="fas fa-gift" /> Gifts
                 </NavLink>
               </li>
             </ul>

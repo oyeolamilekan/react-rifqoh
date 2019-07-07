@@ -74,7 +74,7 @@ export default class ChangePassword extends Component {
       <div>
         <Nav />
         <div className="col-md-4 offset-md-4 mt-3">
-          <div className="p-3 bg-white text-center shadow rounded">
+          <div className="p-3 bg-white text-center rounded">
             <img src={Logo} className="reg-img" alt="logo" />
             {failed ? (
               <div

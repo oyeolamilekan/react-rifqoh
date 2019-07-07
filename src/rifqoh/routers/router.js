@@ -8,8 +8,10 @@ import { PrivateRoute, UnAuthRoute } from "../utils/utils";
 import { Route, Switch } from "react-router-dom";
 
 import ChangePassword from "../accounts/ChangePassword";
+import Dashboard from "../frontPage/Dashboard";
 import EditInfo from "../commerce/EditInfo";
 import Home from "../frontPage/Home";
+import Index from "../giveaway/index";
 import Lesson from "../commerce/Lessons";
 import Login from "../accounts/Login";
 import Logout from "../accounts/Logout";
@@ -53,6 +55,8 @@ const Main = () => (
         path="/commerce/shop-analytics/:slug"
         component={shopAnalytics}
       />
+      <PrivateRoute path="/commerce/give-away" component={Index}/>
+      <PrivateRoute path="/commerce/home" component={Dashboard}/>
       <Route path="" component={NotFound} />
     </Switch>
   </div>
