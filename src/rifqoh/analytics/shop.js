@@ -48,12 +48,24 @@ export default class shopAnalytics extends Component {
   }
   render() {
     const { data } = this.state;
+    let options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true
+            }
+          }
+        ]
+      }
+    }
     return (
       <div>
         <Nav />
         <div className="p-3 bg-white m-2">
-          
-            <Line data={data} />
+            <Line data={data} options={options}/>
         </div>
       </div>
     );

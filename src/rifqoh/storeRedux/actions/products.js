@@ -15,7 +15,6 @@ const create_shop_analytics = (id) => {
 }
 
 const create_tags_analytics = (urlParam) => {
-  console.log(url);
   axios.post(`${url}/api/create_tags_analytics/`,{url:urlParam})
 }
 
@@ -69,6 +68,7 @@ export const getMoreProducts = nextUrl => dispatch => {
 export const getTrendingProducts = ({ slug, cat, history }) => dispatch => {
   // Check if a category is passed in.
   cat = cat === undefined ? "index" : cat;
+  create_tags_analytics(window.location.href);
   axios
     .get(`${url}/api/shop_trending_products/${slug}/${cat}/`)
     .then(res => {

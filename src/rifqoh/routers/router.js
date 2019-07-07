@@ -8,7 +8,7 @@ import { PrivateRoute, UnAuthRoute } from "../utils/utils";
 import { Route, Switch } from "react-router-dom";
 
 import ChangePassword from "../accounts/ChangePassword";
-import Dashboard from "../frontPage/Dashboard";
+import Dashboard from "../dashboard/Dashboard";
 import EditInfo from "../commerce/EditInfo";
 import Home from "../frontPage/Home";
 import Index from "../giveaway/index";
