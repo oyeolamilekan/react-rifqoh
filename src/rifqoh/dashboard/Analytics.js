@@ -7,13 +7,17 @@ import url from "../config/url";
 
 export default function Analytics() {
   const [state, setstate] = useState([]);
+  const [loading, setloading] = useState(true);
+  const [empty, setempty] = useState(false);
+  const [error, seterror] = useState(false);
 
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Token ${Token()}`
   };
+
   const slug = localStorage.getItem("shopSlug", "route4");
-  useEffect(() => {
+  const startData = () => {
     axios
       .get(`${url}/api/get_shop_view/${slug}/`, { headers: headers })
       .then(res => {
@@ -46,8 +50,20 @@ export default function Analytics() {
           ]
         };
         setstate({ data });
+        setloading(false);
+        if (day.length > 0) {
+          setempty(false);
+        } else {
+          setempty(true);
+        }
+      })
+      .catch(() => {
+        seterror(true);
       });
-  }, []);
+  };
+  useEffect(() => {
+    startData();
+  }, [empty, error]);
   let options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -68,7 +84,15 @@ export default function Analytics() {
         <b>Dashboard</b>
       </h5>
       <div className="p-3 bg-white text-center rounded canvas-container">
-        <Line data={data} options={options} />
+        {loading ? (
+          <p>Loading please wait.</p>
+        ) : error ? (
+          <p className="text-center">Something bad happened</p>
+        ) : empty ? (
+          <p>You have no data yet</p>
+        ) : (
+          <Line data={data} options={options} />
+        )}
       </div>
     </div>
   );

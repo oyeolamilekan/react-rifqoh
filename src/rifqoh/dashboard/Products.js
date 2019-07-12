@@ -5,12 +5,16 @@ import axios from "axios";
 import url from "../config/url";
 
 export default function Products() {
+    /**
+     * I hate React hooks, fuck you facebook.
+     */
   const [products, setproduct] = useState([]);
 
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Token ${Token()}`
   };
+
   useEffect(() => {
     axios
       .get(`${url}/api/get_products_clicked/`, { headers: headers })
@@ -19,6 +23,7 @@ export default function Products() {
         setproduct(datan);
       });
   }, []);
+
   return (
     <div className="product-clicked">
       <h5 className="mb-1 mt-3">
