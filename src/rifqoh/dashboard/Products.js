@@ -26,7 +26,7 @@ export default function Products() {
         setproduct(data);
         setloading(false);
         if (data.length > 0) {
-          setempty(false);
+          setempty(true);
         } else {
           setempty(false);
         }

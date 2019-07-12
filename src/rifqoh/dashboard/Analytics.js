@@ -52,9 +52,9 @@ export default function Analytics() {
         setstate({ data });
         setloading(false);
         if (day.length > 0) {
-          setempty(false);
-        } else {
           setempty(true);
+        } else {
+          setempty(false);
         }
       })
       .catch(() => {
