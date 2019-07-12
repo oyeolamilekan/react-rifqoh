@@ -7,7 +7,6 @@ import img2 from "../imgs/img2.png";
 import img3 from "../imgs/img3.png";
 
 export default function Home() {
-  const [username, setUsername] = useState(localStorage.getItem("username"));
   const [slide1, setSlide1] = useState(true);
   const [slide2, setSlide2] = useState(false);
   const [slide3, setSlide3] = useState(false);
@@ -29,6 +28,7 @@ export default function Home() {
     setSlide1(false);
     setSlide3(true);
   };
+  const username = localStorage.getItem("username");
 
   return (
     <div>
