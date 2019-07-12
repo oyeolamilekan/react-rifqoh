@@ -25,7 +25,7 @@ export default function Products() {
         let data = JSON.parse(res.data);
         setproduct(data);
         setloading(false);
-        if (data.length < 0) {
+        if (data.length <= 0) {
           setempty(true);
         } else {
           setempty(false);
@@ -47,11 +47,11 @@ export default function Products() {
       </h5>
       <div className="p-3 bg-white rounded canvas-container">
         {loading ? (
-          <p>Loading please wait.</p>
+          <p className="text-center">Loading please wait.</p>
         ) : error ? (
           <p className="text-center">Something bad happened</p>
         ) : empty ? (
-          <p>You have no data yet</p>
+          <p className="text-center">You have no data yet</p>
         ) : (
           products.map(items => <p>{items.name}</p>)
         )}
