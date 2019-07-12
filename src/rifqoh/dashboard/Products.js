@@ -25,7 +25,7 @@ export default function Products() {
         let data = JSON.parse(res.data);
         setproduct(data);
         setloading(false);
-        if (data.length > 0) {
+        if (data.length < 0) {
           setempty(true);
         } else {
           setempty(false);

@@ -51,7 +51,7 @@ export default function Analytics() {
         };
         setstate({ data });
         setloading(false);
-        if (day.length > 0) {
+        if (day.length < 0) {
           setempty(true);
         } else {
           setempty(false);
