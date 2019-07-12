@@ -5,24 +5,40 @@ import axios from "axios";
 import url from "../config/url";
 
 export default function Products() {
-    /**
-     * I hate React hooks, fuck you facebook.
-     */
+  /**
+   * I hate React hooks, fuck you facebook.
+   */
   const [products, setproduct] = useState([]);
+  const [loading, setloading] = useState(true);
+  const [empty, setempty] = useState(false);
+  const [error, seterror] = useState(false);
 
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Token ${Token()}`
   };
 
-  useEffect(() => {
+  const getProducts = () => {
     axios
       .get(`${url}/api/get_products_clicked/`, { headers: headers })
       .then(res => {
-        let datan = JSON.parse(res.data);
-        setproduct(datan);
+        let data = JSON.parse(res.data);
+        setproduct(data);
+        setloading(false);
+        if (data.length > 0) {
+          setempty(false);
+        } else {
+          setempty(false);
+        }
+      })
+      .catch(() => {
+        seterror(true);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, [empty, error, loading]);
 
   return (
     <div className="product-clicked">
@@ -30,10 +46,14 @@ export default function Products() {
         <b>Recently Clicked</b>
       </h5>
       <div className="p-3 bg-white rounded canvas-container">
-        {products.length > 0 ? (
-          products.map(items => <p>{items.name}</p>)
+        {loading ? (
+          <p>Loading please wait.</p>
+        ) : error ? (
+          <p className="text-center">Something bad happened</p>
+        ) : empty ? (
+          <p>You have no data yet</p>
         ) : (
-          <p className="text-center">No products clicked</p>
+          products.map(items => <p>{items.name}</p>)
         )}
       </div>
     </div>

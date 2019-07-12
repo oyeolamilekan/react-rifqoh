@@ -63,7 +63,8 @@ export default function Analytics() {
   };
   useEffect(() => {
     startData();
-  }, [empty, error]);
+  }, [empty, error, loading]);
+  
   let options = {
     responsive: true,
     maintainAspectRatio: false,
