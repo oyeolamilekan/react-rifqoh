@@ -28,6 +28,7 @@ export default function Home() {
     setSlide1(false);
     setSlide3(true);
   };
+  
   const username = localStorage.getItem("username");
 
   return (
@@ -52,7 +53,7 @@ export default function Home() {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
                 <Link
-                  to="/commerce/tags"
+                  to="/commerce/home"
                   className="nav-link btn btn-dark text-white"
                 >
                   GO TO ADMIN
