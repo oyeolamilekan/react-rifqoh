@@ -79,7 +79,7 @@ export default function Home() {
       <div className="front-bg-line bg-line text-white">
         <div className="header-info container">
           <h1 className="font-weight-light header">
-            Looking for an eCommerce Platform like Shopify? You’re in the wrong
+            Looking hh for an eCommerce Platform like Shopify? You’re in the wrong
             place.
           </h1>
           <h5 className="mt-5 font-weight-light">
