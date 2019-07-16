@@ -27,7 +27,6 @@ class Analytics extends Component {
         this.setState({ day });
         this.setState({ data_set });
         this.setState({ loading: false });
-        console.log(this.state.data_set);
       })
       .catch(() => {
         this.setState({ error: true });
@@ -79,7 +78,7 @@ class Analytics extends Component {
       <div className="p-3 bg-white text-center rounded canvas-container">
         {loading ? (
           <p>Loading</p>
-        ) : data.length > 0 ? (
+        ) : data_set.length > 0 ? (
           <Line data={data} options={options} />
         ) : (
           <p>Empty data</p>
