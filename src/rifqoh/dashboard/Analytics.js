@@ -27,7 +27,7 @@ class Analytics extends Component {
         this.setState({ day });
         this.setState({ data_set });
         this.setState({ loading: false });
-        console.log(data_set);
+        console.log(this.state.data_set);
       })
       .catch(() => {
         this.setState({ error: true });
