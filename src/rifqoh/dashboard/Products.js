@@ -30,6 +30,7 @@ export default function Products() {
         } else {
           setempty(false);
         }
+        console.log(data, products);
       })
       .catch(() => {
         seterror(true);
