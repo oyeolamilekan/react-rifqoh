@@ -12,8 +12,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
-import registerServiceWorker from "./registerServiceWorker";
 import store from "./rifqoh/storeRedux/store";
+import { unregister } from "./registerServiceWorker";
 
 const parsedData = window.location.host.split(".");
 const isIp = /\d/.test(parsedData[0][0]);
@@ -40,4 +40,4 @@ if (
     document.getElementById("root")
   );
 }
-registerServiceWorker();
+unregister();
