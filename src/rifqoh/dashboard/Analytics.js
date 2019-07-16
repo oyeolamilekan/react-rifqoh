@@ -75,14 +75,19 @@ class Analytics extends Component {
       }
     };
     return (
-      <div className="p-3 bg-white text-center rounded canvas-container">
-        {loading ? (
-          <p>Loading</p>
-        ) : data_set.length > 0 ? (
-          <Line data={data} options={options} />
-        ) : (
-          <p>Empty data</p>
-        )}
+      <div className="analytics-container">
+        <h5 className="mb-1 mt-3">
+          <b>Recently Clicked</b>
+        </h5>
+        <div className="p-3 bg-white text-center rounded canvas-container">
+          {loading ? (
+            <p>Loading</p>
+          ) : data_set.length > 0 ? (
+            <Line data={data} options={options} />
+          ) : (
+            <p>Empty data</p>
+          )}
+        </div>
       </div>
     );
   }
