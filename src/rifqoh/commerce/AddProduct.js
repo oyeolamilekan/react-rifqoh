@@ -19,6 +19,7 @@ export default class AddProduct extends Component {
     error: false
   };
 
+  fileInput = React.createRef();
   baseState = this.state;
 
   componentDidMount() {
@@ -63,16 +64,11 @@ export default class AddProduct extends Component {
   // And does some cool animation
   handleSubmit = event => {
     event.preventDefault();
-    event.target.value = null;
+    event.target.reset();
     this.setState({
       loading: true,
       sent: false
     });
-
-    console.log(this.state);
-    // Stop the form from submitting
-    event.preventDefault();
-
     // Get the data from the form state.
     const { productName, productPrice, description, file, tags } = this.state;
 
@@ -95,7 +91,6 @@ export default class AddProduct extends Component {
       })
       .then(res => {
         this.props.addProducts(res.data.product);
-        document.forms[0].reset();
         this.setState({
           sent: true,
           productName: "",
@@ -104,7 +99,7 @@ export default class AddProduct extends Component {
           fileName: ""
         });
       })
-      .catch(error => {
+      .catch(() => {
         this.setState({
           error: true,
           loading: false
@@ -135,7 +130,7 @@ export default class AddProduct extends Component {
         )}
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Product name</label>
+            <label htmlFor="productName">Product name</label>
             <input
               type="text"
               className="form-control"
@@ -149,7 +144,7 @@ export default class AddProduct extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Product price</label>
+            <label htmlFor="productPrice">Product price</label>
             <input
               type="text"
               className="form-control"
@@ -168,21 +163,27 @@ export default class AddProduct extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="exampleFormControlSelect1">Product tags</label>
+            <label htmlFor="productTags">Product tags</label>
             <select
               className="form-control"
               onChange={this.handleChange}
               name="tags"
               required
             >
-              <option defaultValue value="">Choose category..</option>
+              <option defaultValue value="">
+                Choose category..
+              </option>
               {chossenTags.map((e, key) => {
-                return <option key={key} value={JSON.stringify(e)}>{e.name}</option>;
+                return (
+                  <option key={key} value={JSON.stringify(e)}>
+                    {e.name}
+                  </option>
+                );
               })}
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="exampleFormControlTextarea1">Description</label>
+            <label htmlFor="Description">Description</label>
             <textarea
               className="form-control"
               id="exampleFormControlTextarea1"
@@ -195,21 +196,20 @@ export default class AddProduct extends Component {
             />
           </div>
           <label>Product image</label>
+
           <input
             type="file"
             name="file"
             id="file"
             className="inputfile"
-            onChange={this.handelOnUploadFile}
             accept=".png, .jpg, .jpeg"
-            required
+            ref={this.fileInput}
+            onChange={this.handelOnUploadFile}
           />
           <label htmlFor="file">{fileName ? fileName : "Choose a file"}</label>
-          <div className="btn-container">
-            <button type="submit" className="btn btn-dark btn-block rounded">
-              <i className="fa fa-paper-plane" /> Save
-            </button>
-          </div>
+          <button className="btn btn-dark btn-block rounded">
+            <i className="fa fa-paper-plane" /> Save
+          </button>
         </form>
       </div>
     );

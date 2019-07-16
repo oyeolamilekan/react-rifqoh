@@ -100,7 +100,7 @@ export default class EditInfo extends Component {
         });
         localStorage.setItem("logo", res.data.img);
       })
-      .catch(error => {
+      .catch(() => {
         this.setState({
           error: true,
           loading: false

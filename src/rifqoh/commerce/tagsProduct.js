@@ -113,7 +113,7 @@ export default class tagsProduct extends Component {
                         className="bg-tags pl-3 pr-3 pt-1 pb-1 text-white rounded mr-2 h5 font-weight-light"
                         key={index}
                       >
-                        {jsUcfirst(tags.name)}
+                        {jsUcfirst(tags.name)} {tags.product_count > 0? tags.product_count :''}
                       </span>
                     );
                   })}

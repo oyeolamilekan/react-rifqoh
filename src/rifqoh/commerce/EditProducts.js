@@ -88,9 +88,8 @@ export default class EditProducts extends Component {
   // Submits the form data to the API
   // And does some cool animation
   handleSubmit = event => {
-    console.log(this.props.product.id);
     event.preventDefault();
-    event.target.value = null;
+    event.target.reset();
     this.setState({
       loading: true
     });
@@ -201,17 +200,17 @@ export default class EditProducts extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="exampleFormControlSelect1">Product tags</label>
+
+              <label htmlFor="exampleFormControlSelect1">Product tags: <b>Current Tag:</b> {tags.name}</label>
               <select
                 className="form-control"
                 onChange={this.handleChange}
                 name="tags"
                 value={tags}
-                required
               >
-                <option defaultValue={tags}>
-                  {tags.name}
-                </option>
+              <option defaultValue value="" >
+                Choose category..
+              </option> 
                 {shop_category.map((e, key) => {
                   return e.name !== this.props.product.genre.name ? (
                     <option key={key} value={JSON.stringify(e)}>
