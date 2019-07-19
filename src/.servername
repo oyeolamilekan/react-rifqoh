@@ -1,11 +1,2 @@
 server ip: 159.203.180.141
 
-
-sudo mv /etc/letsencrypt/live/shopstack.co/cert.pem /etc/letsencrypt/live/shopstack.co/cert.pem.old
-sudo ln -s /etc/letsencrypt/archive/shopstack.co/cert1.pem /etc/letsencrypt/live/shopstack.co/cert.pem
-
-sudo mv /etc/letsencrypt/live/shopstack.co/chain.pem /etc/letsencrypt/live/shopstack.co/chain.pem.old
-sudo ln -s /etc/letsencrypt/archive/shopstack.co/chain1.pem /etc/letsencrypt/live/shopstack.co/chain.pem
-
-sudo mv /etc/letsencrypt/live/shopstack.co/privkey.pem /etc/letsencrypt/live/shopstack.co/privkey.pem.old
-sudo ln -s /etc/letsencrypt/archive/shopstack.co/privkey1.pem /etc/letsencrypt/live/shopstack.co/privkey.pem

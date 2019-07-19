@@ -24,7 +24,6 @@ export default class EditProducts extends Component {
   baseState = this.state;
 
   componentDidMount() {
-    console.log("hello", this.props.product);
     axios
       .get(`${url}/api/catergory_list/`, {
         headers: {
@@ -54,16 +53,26 @@ export default class EditProducts extends Component {
     const { product } = this.props;
     console.log(product);
     if (prevProps.product !== product) {
-      this.setState({
-        productName: product.name,
-        productPrice: product.price,
-        description: product.description,
-        productId: product.id,
-        tags: product.genre,
-        fileName: "",
-        sent: false,
-        loading: false
-      });
+      axios
+        .get(`${url}/api/catergory_list/`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${Token()}`
+          }
+        })
+        .then(res => {
+          this.setState({
+            shop_category: res.data.shop_categories,
+            productName: product.name,
+            productPrice: product.price,
+            description: product.description,
+            productId: product.id,
+            tags: product.genre,
+            fileName: "",
+            sent: false,
+            loading: false
+          });
+        });
     }
   }
 
@@ -89,12 +98,9 @@ export default class EditProducts extends Component {
   // And does some cool animation
   handleSubmit = event => {
     event.preventDefault();
-    event.target.reset();
     this.setState({
       loading: true
     });
-    // Stop the form from submitting
-    event.preventDefault();
 
     // Get the data from the form state.
     const {
@@ -114,7 +120,7 @@ export default class EditProducts extends Component {
     data.append("productName", productName);
     data.append("productPrice", productPrice);
     data.append("description", description);
-    data.append("tags", typeof(tags) !== 'string' ? JSON.stringify(tags) : tags);
+    data.append("tags", typeof tags !== "string" ? JSON.stringify(tags) : tags);
     data.append("id", productId);
     // Send a post request to the server with
     // needed information
@@ -131,12 +137,13 @@ export default class EditProducts extends Component {
           sent: true
         });
       })
-      .catch(error => {
+      .catch(() => {
         this.setState({
           error: true,
           loading: false
         });
       });
+    // event.target.reset();
   };
   render() {
     const {
@@ -200,24 +207,23 @@ export default class EditProducts extends Component {
             </div>
 
             <div className="form-group">
-
-              <label htmlFor="exampleFormControlSelect1">Product tags: <b>Current Tag:</b> {tags.name}</label>
+              <label htmlFor="exampleFormControlSelect1">
+                Product tags
+              </label>
               <select
                 className="form-control"
                 onChange={this.handleChange}
                 name="tags"
-                value={tags}
               >
-              <option defaultValue value="" >
-                Choose category..
-              </option> 
                 {shop_category.map((e, key) => {
-                  return e.name !== this.props.product.genre.name ? (
-                    <option key={key} value={JSON.stringify(e)}>
+                  return (
+                    <option
+                      key={key}
+                      value={JSON.stringify(e)}
+                      selected={e.name === tags.name}
+                    >
                       {e.name}
                     </option>
-                  ) : (
-                    ""
                   );
                 })}
               </select>
