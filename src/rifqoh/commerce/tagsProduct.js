@@ -19,7 +19,10 @@ export default class tagsProduct extends Component {
     categoryName: "",
     loading: true,
     sent: false,
-    error: false
+    error: false,
+    deleteData: "",
+    deleteLoading: false,
+    deleteSuccess: false
   };
 
   componentDidMount() {
@@ -75,7 +78,6 @@ export default class tagsProduct extends Component {
         });
       })
       .catch(() => {
-        console.log("kii");
         this.setState({
           sent: false,
           error: true,
@@ -92,9 +94,51 @@ export default class tagsProduct extends Component {
     });
   };
 
+  deleteTags = id => {
+    this.setState({
+      deleteData: id,
+      deleteSuccess: false
+    });
+  };
+
+  confirmDelete = () => {
+    let { shop_category, deleteData } = this.state;
+
+    shop_category = shop_category.filter(i => {
+      return i.id !== deleteData.id;
+    });
+
+    this.setState({
+      deleteLoading: true
+    });
+
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Token ${Token()}`
+    };
+
+    axios
+      .delete(`${url}/api/delete_tags/`, { data: deleteData, headers })
+      .then(() => {
+        this.setState({
+          shop_category,
+          deleteLoading: false,
+          deleteSuccess: true
+        });
+      });
+  };
+
   render() {
     const shopName = localStorage.getItem("shopName");
-    const { shop_category, loading, sent, categoryName, error } = this.state;
+    const {
+      shop_category,
+      loading,
+      sent,
+      categoryName,
+      error,
+      deleteLoading,
+      deleteSuccess
+    } = this.state;
     return (
       <div>
         <Nav name={shopName} />
@@ -113,7 +157,14 @@ export default class tagsProduct extends Component {
                         className="bg-tags pl-3 pr-3 pt-1 pb-1 text-white rounded mr-2 h5 font-weight-light"
                         key={index}
                       >
-                        {jsUcfirst(tags.name)} {tags.product_count > 0? tags.product_count :''}
+                        {jsUcfirst(tags.name)}{" "}
+                        {tags.product_count > 0 ? tags.product_count : ""}{" "}
+                        <i
+                          className="fa fa-trash pointer"
+                          data-toggle="modal"
+                          data-target="#deleteProduct"
+                          onClick={() => this.deleteTags(tags)}
+                        />
                       </span>
                     );
                   })}
@@ -130,6 +181,57 @@ export default class tagsProduct extends Component {
             )}
           </div>
         </div>
+        {/* Delete Product modal */}
+        <div className="modal" id="deleteProduct">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              {/* <!-- Modal Header --> */}
+              <div className="modal-header text-center">
+                <h4 className="modal-title">Delete Tag</h4>
+                <button type="button" className="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              {/* <!-- Modal body --> */}
+              <div className="modal-body">
+                {deleteLoading ? (
+                  <div className="text-center">
+                    <Loading />
+                  </div>
+                ) : deleteSuccess ? (
+                  <p className="text-center">
+                    You successfully deleted the data.
+                  </p>
+                ) : (
+                  <div>
+                    <p className="text-center">
+                      This tag and products under it, will be deleted permanently. Do you want to
+                      continue?
+                    </p>
+                    <div className="float-left">
+                      <span
+                        className="btn btn-sm btn-light"
+                        data-dismiss="modal"
+                      >
+                        Cancel
+                      </span>
+                    </div>
+                    <div className="float-right">
+                      <span
+                        className="btn btn-sm btn-danger"
+                        onClick={this.confirmDelete}
+                      >
+                        Yes, Delete
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {/* End Modal body */}
+            </div>
+          </div>
+        </div>
+        {/* End Delete product modal */}
 
         {/* Handle the tags of the product */}
         <div className="modal" id="myModal">
