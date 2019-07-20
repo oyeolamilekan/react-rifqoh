@@ -65,6 +65,7 @@ export default class AddProduct extends Component {
   handleSubmit = event => {
     event.preventDefault();
     event.target.reset();
+    event.target.value = null;
     this.setState({
       loading: true,
       sent: false

@@ -51,7 +51,6 @@ export default class EditProducts extends Component {
 
   componentDidUpdate(prevProps) {
     const { product } = this.props;
-    console.log(product);
     if (prevProps.product !== product) {
       axios
         .get(`${url}/api/catergory_list/`, {
@@ -122,6 +121,7 @@ export default class EditProducts extends Component {
     data.append("description", description);
     data.append("tags", typeof tags !== "string" ? JSON.stringify(tags) : tags);
     data.append("id", productId);
+    
     // Send a post request to the server with
     // needed information
     axios
@@ -207,7 +207,7 @@ export default class EditProducts extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="exampleFormControlSelect1">
+              <label htmlFor="productTag">
                 Product tags
               </label>
               <select
