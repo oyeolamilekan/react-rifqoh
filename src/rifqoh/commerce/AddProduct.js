@@ -206,6 +206,7 @@ export default class AddProduct extends Component {
             accept=".png, .jpg, .jpeg"
             ref={this.fileInput}
             onChange={this.handelOnUploadFile}
+            required
           />
           <label htmlFor="file">{fileName ? fileName : "Choose a file"}</label>
           <button className="btn btn-dark btn-block rounded">
