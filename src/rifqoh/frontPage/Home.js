@@ -181,7 +181,7 @@ export default function Home() {
       </div>
       <div className="call-to-action bg-white border-top p-5 text-center">
         <h3>Try Shopstack for 6 month no payment required.</h3>
-        <Link to="/signup" className="btn btn-sm btn-dark pl-4 pr-4">
+        <Link to="/commerce/signup" className="btn btn-sm btn-dark pl-4 pr-4">
           Sign up
         </Link>
       </div>
