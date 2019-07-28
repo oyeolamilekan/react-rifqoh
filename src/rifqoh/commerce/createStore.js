@@ -87,7 +87,7 @@ class createShop extends Component {
         } else {
           localStorage.setItem("shopName", shopName);
           localStorage.setItem("shopSlug", res.data.slug);
-          this.props.history.push("/commerce/tags");
+          this.props.history.push("/commerce/lessons/index");
         }
       })
       .catch(err => {
