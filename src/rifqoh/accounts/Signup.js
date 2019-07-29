@@ -46,7 +46,7 @@ class SignUp extends Component {
     });
     axios
       .post(`${url}/api/register/`, {
-        email: email,
+        email: email.toLowerCase(),
         password: password,
         name: name,
         is_commerce: true

@@ -48,7 +48,7 @@ class Login extends Component {
     });
     axios
       .post(`${url}/api/login/`, {
-        email: email,
+        email: email.toLowerCase(),
         password: password
       })
       .then(res => {
