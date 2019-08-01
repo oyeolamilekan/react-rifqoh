@@ -9,6 +9,7 @@
 # production
 
 # misc
+.servername
 .DS_Store
 .env.local
 .env.development.local

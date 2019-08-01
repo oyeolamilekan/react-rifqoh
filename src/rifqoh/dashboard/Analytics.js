@@ -85,7 +85,7 @@ class Analytics extends Component {
           ) : data_set.length > 0 ? (
             <Line data={data} options={options} />
           ) : (
-            <p>Empty data</p>
+            <p className="text-center">You have no data yet</p>
           )}
         </div>
       </div>

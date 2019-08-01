@@ -26,7 +26,6 @@ export default class tagsProduct extends Component {
   };
 
   componentDidMount() {
-    console.log("hello");
     axios
       .get(`${url}/api/catergory_list/`, {
         headers: {

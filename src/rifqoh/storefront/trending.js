@@ -37,7 +37,6 @@ class Trending extends Component {
 
   getProducts() {
     const { slug } = this.props.match.params;
-    console.log(this.props.match.params.slug);
     let shop_data = {
       slug: this.props.shopName,
       cat: slug !== "" ? slug : "index",

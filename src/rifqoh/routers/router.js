@@ -20,6 +20,7 @@ import PasswordResetChange from "../accounts/PasswordResetChange";
 import PasswordResetForm from "../accounts/PasswordResetForm";
 import React from "react";
 import SignUp from "../accounts/Signup";
+import aboutPage from "../mypage";
 import cProducts from "../commerce/cProducts";
 import createShop from "../commerce/createStore";
 import productAnalytics from "../analytics/products";
@@ -29,11 +30,12 @@ import tagsProduct from "../commerce/tagsProduct";
 const Main = () => (
   <div className="con">
     <Switch>
-      <Route exact path="/" component={Home} />
       <UnAuthRoute path="/commerce/login" component={Login} />
-      <Route path="/commerce/logout" component={Logout} />
       <UnAuthRoute path="/commerce/signup" component={SignUp} />
+      <Route exact path="/" component={Home} />
+      <Route path="/commerce/logout" component={Logout} />
       <Route path="/commerce/reset" component={PasswordResetForm} />
+      <Route path="/commerce/oye-olalekan-johnson" component={aboutPage} />
       <Route
         path="/commerce/reset-change/:token"
         component={PasswordResetChange}

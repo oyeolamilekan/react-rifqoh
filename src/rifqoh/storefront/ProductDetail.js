@@ -27,7 +27,6 @@ class ProductDetail extends Component {
     this.setState({
       results: results
     });
-    // console.log(results);
   }
 
   create_analytics = id => {

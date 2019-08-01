@@ -116,7 +116,6 @@ class cProducts extends Component {
       "Content-Type": "application/json",
       Authorization: `Token ${Token()}`
     };
-    console.log(deleteData, Token());
     axios
       .delete(`${url}/api/delete_products/`, { data: deleteData, headers })
       .then(() => {
@@ -316,6 +315,7 @@ class cProducts extends Component {
                 )}
               </div>
               {/* End Modal body */}
+              
             </div>
           </div>
         </div>

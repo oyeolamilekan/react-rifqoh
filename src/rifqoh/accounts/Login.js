@@ -52,7 +52,6 @@ class Login extends Component {
         password: password
       })
       .then(res => {
-        console.log(res.data);
         const {
           token,
           name,

@@ -20,7 +20,6 @@ export default class EditInfo extends Component {
   fileInput = React.createRef();
 
   componentDidMount() {
-    // TODO: implement an api route to get user info
     // And prefill it
     axios
       .get(`${url}/api/get_info/`, {
@@ -30,7 +29,6 @@ export default class EditInfo extends Component {
         }
       })
       .then(res => {
-        console.log(res.data);
         this.setState({
           name: res.data.title,
           address: res.data.address,

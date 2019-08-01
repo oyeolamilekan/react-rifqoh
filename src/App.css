@@ -527,3 +527,16 @@ canvas{
     height:100% !important;
   }
 }
+
+/* Simple explanation of what i do ? */
+.display-table-cell {
+  display: table-cell; 
+  vertical-align: top; 
+  padding-right: 10px;
+  margin-top: 8px;
+}
+
+.img-md {
+  width: 40px;
+  height: 40px;
+}

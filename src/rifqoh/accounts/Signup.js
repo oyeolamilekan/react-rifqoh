@@ -64,7 +64,6 @@ class SignUp extends Component {
           : this.props.history.push("/");
       })
       .catch(er => {
-        console.log(er.response);
         const err = er.response.data;
         if (err.username) {
           this.setState({

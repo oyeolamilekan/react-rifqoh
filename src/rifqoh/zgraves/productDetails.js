@@ -23,7 +23,6 @@ class ProductDetail extends Component {
     this.setState({
       results: results
     });
-    // console.log(results);
   }
 
   componentDidUpdate(prevProps, prevState, snapShot) {
