@@ -81,7 +81,7 @@ class Analytics extends Component {
         </h5>
         <div className="p-3 bg-white text-center rounded canvas-container">
           {loading ? (
-            <p>Loading</p>
+            <p>Loading please wait.</p>
           ) : data_set.length > 0 ? (
             <Line data={data} options={options} />
           ) : (
