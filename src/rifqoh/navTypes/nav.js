@@ -85,7 +85,7 @@ class Navigation extends Component {
                   className="nav-link"
                   onClick={clicker}
                 >
-                <i className="fas fa-home"></i>
+                  <i className="fas fa-home" />
                   Home
                 </NavLink>
               </li>

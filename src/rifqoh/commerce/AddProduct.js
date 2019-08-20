@@ -35,7 +35,7 @@ export default class AddProduct extends Component {
           chossenTags: res.data.shop_categories
         });
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
           is_exist: true
         });
@@ -107,6 +107,16 @@ export default class AddProduct extends Component {
         });
       });
   };
+
+  handleNewProducts = event => {
+    event.preventDefault();
+    this.setState({
+      error: false,
+      loading: false,
+      sent: false
+    });
+  };
+  
   render() {
     const {
       chossenTags,
@@ -121,98 +131,109 @@ export default class AddProduct extends Component {
     return (
       <div>
         {sent ? (
-          <div className="text-center">Success.</div>
+          <div className="text-center">
+            <h2>Success.</h2>
+            <p>To add new product kindly click the button.</p>
+            <a
+              href="/#"
+              className="btn btn-dark"
+              onClick={this.handleNewProducts}
+            >
+              Add +
+            </a>
+          </div>
         ) : loading ? (
           <div className="text-center">Sending please wait.</div>
         ) : error ? (
           <div className="text-center">Something bad happened.</div>
         ) : (
-          ""
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="productName">Product name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter Product name"
+                onChange={this.handleChange}
+                name="productName"
+                value={productName}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="productPrice">Product price</label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter Price"
+                value={productPrice}
+                name="productPrice"
+                required
+                onChange={event =>
+                  this.setState({
+                    productPrice: delimitNumbers(event.target.value.toString())
+                  })
+                }
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="productTags">Product tags</label>
+              <select
+                className="form-control"
+                onChange={this.handleChange}
+                name="tags"
+                required
+              >
+                <option defaultValue value="">
+                  Choose category..
+                </option>
+                {chossenTags.map((e, key) => {
+                  return (
+                    <option key={key} value={JSON.stringify(e)}>
+                      {e.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="Description">Description</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                placeholder="Kindly enter the description."
+                onChange={this.handleChange}
+                name="description"
+                value={description}
+                required
+              />
+            </div>
+            <label>Product image</label>
+
+            <input
+              type="file"
+              name="file"
+              id="file"
+              className="inputFile"
+              accept=".png, .jpg, .jpeg"
+              ref={this.fileInput}
+              onChange={this.handelOnUploadFile}
+              required
+            />
+            <label htmlFor="file">
+              {fileName ? fileName : "Choose a file"}
+            </label>
+            <button className="btn btn-dark btn-block rounded">
+              <i className="fa fa-paper-plane" /> Save
+            </button>
+          </form>
         )}
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="productName">Product name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="Enter Product name"
-              onChange={this.handleChange}
-              name="productName"
-              value={productName}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="productPrice">Product price</label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="Enter Price"
-              value={productPrice}
-              name="productPrice"
-              required
-              onChange={event =>
-                this.setState({
-                  productPrice: delimitNumbers(event.target.value.toString())
-                })
-              }
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="productTags">Product tags</label>
-            <select
-              className="form-control"
-              onChange={this.handleChange}
-              name="tags"
-              required
-            >
-              <option defaultValue value="">
-                Choose category..
-              </option>
-              {chossenTags.map((e, key) => {
-                return (
-                  <option key={key} value={JSON.stringify(e)}>
-                    {e.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="Description">Description</label>
-            <textarea
-              className="form-control"
-              id="exampleFormControlTextarea1"
-              rows="3"
-              placeholder="Kindly enter the description."
-              onChange={this.handleChange}
-              name="description"
-              value={description}
-              required
-            />
-          </div>
-          <label>Product image</label>
-
-          <input
-            type="file"
-            name="file"
-            id="file"
-            className="inputfile"
-            accept=".png, .jpg, .jpeg"
-            ref={this.fileInput}
-            onChange={this.handelOnUploadFile}
-            required
-          />
-          <label htmlFor="file">{fileName ? fileName : "Choose a file"}</label>
-          <button className="btn btn-dark btn-block rounded">
-            <i className="fa fa-paper-plane" /> Save
-          </button>
-        </form>
       </div>
     );
   }

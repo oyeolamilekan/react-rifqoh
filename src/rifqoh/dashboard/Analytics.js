@@ -18,13 +18,12 @@ class Analytics extends Component {
       "Content-Type": "application/json",
       Authorization: `Token ${Token()}`
     };
-    const slug = localStorage.getItem("shopSlug", "");
     axios
-      .get(`${url}/api/get_shop_view/${slug}/`, { headers: headers })
+      .get(`${url}/api/get_shop_view/`, { headers: headers })
       .then(res => {
-        const { data: day } = JSON.parse(res.data.day_set);
-        const { data: data_set } = JSON.parse(res.data.data_set);
-        this.setState({ day });
+        let { day_set } = res.data;
+        let { data_set } = res.data;
+        this.setState({ day_set });
         this.setState({ data_set });
         this.setState({ loading: false });
       })
@@ -33,9 +32,9 @@ class Analytics extends Component {
       });
   }
   render() {
-    const { day, data_set, loading } = this.state;
+    const { day_set, data_set, loading } = this.state;
     const data = {
-      labels: day,
+      labels: day_set,
       datasets: [
         {
           label: "Page Views",

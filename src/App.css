@@ -10,7 +10,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 15px;
   background-color: #e5e7f1;
   min-height: 100%;
@@ -360,7 +360,8 @@ a.float:hover {
 }
 
 /* Admin file upload */
-.inputfile {
+.inputfile,
+.inputFile {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -368,7 +369,8 @@ a.float:hover {
   position: absolute;
   z-index: -1;
 }
-.inputfile + label {
+.inputfile + label,
+.inputFile + label {
   width: 100%;
   cursor: pointer;
   font-size: 1.25em;
@@ -383,7 +385,9 @@ a.float:hover {
 }
 
 .inputfile:focus + label,
-.inputfile + label:hover {
+.inputfile + label:hover,
+.inputFile:focus + label,
+.inputFile + label:hover {
   text-align: center;
   padding: 5px;
   border-radius: 4px;
@@ -510,28 +514,26 @@ a.float:hover {
   height: 100%;
 }
 
-
-canvas{
-  width:auto;
-  height:550px !important ;
+canvas {
+  width: auto;
+  height: 550px !important ;
 }
 
-.canvas-container > canvas{
+.canvas-container > canvas {
   height: 300px !important;
 }
 
 @media screen and (max-width: 479px) {
-  canvas{
-
-    width:100% !important;
-    height:100% !important;
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 
 /* Simple explanation of what i do ? */
 .display-table-cell {
-  display: table-cell; 
-  vertical-align: top; 
+  display: table-cell;
+  vertical-align: top;
   padding-right: 10px;
   margin-top: 8px;
 }

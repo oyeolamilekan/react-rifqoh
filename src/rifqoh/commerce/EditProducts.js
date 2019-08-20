@@ -21,6 +21,8 @@ export default class EditProducts extends Component {
     error: false
   };
 
+  fileInput = React.createRef();
+
   baseState = this.state;
 
   componentDidMount() {
@@ -42,7 +44,7 @@ export default class EditProducts extends Component {
           mounting: false
         });
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
           is_exist: true
         });
@@ -77,7 +79,7 @@ export default class EditProducts extends Component {
 
   // Handle the uploaded file
   // and update it to the state
-  handelOnUploadFile = event => {
+  handelOnUploadEditFile = event => {
     this.setState({
       fileName: event.target.files[0].name,
       file: event.target.files[0]
@@ -121,7 +123,7 @@ export default class EditProducts extends Component {
     data.append("description", description);
     data.append("tags", typeof tags !== "string" ? JSON.stringify(tags) : tags);
     data.append("id", productId);
-    
+
     // Send a post request to the server with
     // needed information
     axios
@@ -166,10 +168,7 @@ export default class EditProducts extends Component {
           <div className="text-center">Sending please wait.</div>
         ) : error ? (
           <div className="text-center">Something bad happened.</div>
-        ) : (
-          ""
-        )}
-        {mounting ? (
+        ) : mounting ? (
           <div className="text-center">Loading...</div>
         ) : (
           <form onSubmit={this.handleSubmit}>
@@ -207,9 +206,7 @@ export default class EditProducts extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="productTag">
-                Product tags
-              </label>
+              <label htmlFor="productTag">Product tags</label>
               <select
                 className="form-control"
                 onChange={this.handleChange}
@@ -247,7 +244,8 @@ export default class EditProducts extends Component {
               name="file"
               id="file"
               className="inputfile"
-              onChange={this.handelOnUploadFile}
+              ref={this.fileInput}
+              onChange={this.handelOnUploadEditFile}
               accept=".png, .jpg, .jpeg"
             />
             <label htmlFor="file">

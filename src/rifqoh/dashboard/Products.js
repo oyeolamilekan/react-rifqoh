@@ -22,7 +22,7 @@ export default function Products() {
     axios
       .get(`${url}/api/get_products_clicked/`, { headers: headers })
       .then(res => {
-        let data = JSON.parse(res.data);
+        let data = res.data;
         setproduct(data);
         setloading(false);
         if (data.length <= 0) {
@@ -43,7 +43,7 @@ export default function Products() {
   return (
     <div className="product-clicked">
       <h5 className="mb-1 mt-3">
-        <b>Recently Clicked</b>
+        <b>Products Clicked</b>
       </h5>
       <div className="p-3 bg-white rounded canvas-container">
         {loading ? (
