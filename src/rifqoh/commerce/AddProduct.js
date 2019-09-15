@@ -16,6 +16,7 @@ export default class AddProduct extends Component {
     fileName: "",
     loading: false,
     sent: false,
+    open: false,
     error: false
   };
 
@@ -91,6 +92,7 @@ export default class AddProduct extends Component {
         }
       })
       .then(res => {
+        console.log(data);
         this.props.addProducts(res.data.product);
         this.setState({
           sent: true,
@@ -130,6 +132,7 @@ export default class AddProduct extends Component {
     } = this.state;
     return (
       <div>
+        
         {sent ? (
           <div className="text-center">
             <h2>Success.</h2>

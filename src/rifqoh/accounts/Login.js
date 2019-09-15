@@ -66,15 +66,19 @@ class Login extends Component {
         localStorage.setItem("is_commerce", is_commerce);
         localStorage.setItem("is_admin", is_admin);
         localStorage.setItem("token", token);
-        localStorage.setItem("logo", shop_logo);
-        localStorage.setItem("shopSlug", shop_slug);
-        localStorage.setItem("shopName", shop_name);
-        localStorage.setItem("expirationDate", expirationDate);
-        shop_name.length > 0
-          ? this.props.history.push("/commerce/home")
-          : this.props.history.push("/");
+        if (shop_name) {
+          localStorage.setItem("logo", shop_logo);
+          localStorage.setItem("shopSlug", shop_slug);
+          localStorage.setItem("shopName", shop_name);
+          localStorage.setItem("expirationDate", expirationDate);
+          shop_name.length > 0
+            ? this.props.history.push("/commerce/home")
+            : this.props.history.push("/");
+        } else {
+          this.props.history.push("/commerce/create/shop");
+        }
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
           error: true,
           loading: false

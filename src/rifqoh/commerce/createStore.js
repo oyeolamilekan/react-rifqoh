@@ -90,7 +90,7 @@ class createShop extends Component {
           this.props.history.push("/commerce/lessons/index");
         }
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
           is_exist: true,
           isLoading: false

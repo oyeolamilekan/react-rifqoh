@@ -94,6 +94,7 @@ export default class tagsProduct extends Component {
   };
 
   deleteTags = id => {
+    console.log(id);
     this.setState({
       deleteData: id,
       deleteSuccess: false
@@ -104,7 +105,7 @@ export default class tagsProduct extends Component {
     let { shop_category, deleteData } = this.state;
 
     shop_category = shop_category.filter(i => {
-      return i.id !== deleteData.id;
+      return i.slug !== deleteData.slug;
     });
 
     this.setState({

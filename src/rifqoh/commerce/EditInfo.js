@@ -7,7 +7,7 @@ import axios from "axios";
 import url from "../config/url";
 
 export default class EditInfo extends Component {
-  state = {
+   state = {
     name: "",
     logo: "",
     logoName: "",
@@ -19,7 +19,13 @@ export default class EditInfo extends Component {
   };
   fileInput = React.createRef();
 
+  /**
+   *
+   *
+   * @memberof EditInfo
+   */
   componentDidMount() {
+
     // And prefill it
     axios
       .get(`${url}/api/get_info/`, {
@@ -45,8 +51,13 @@ export default class EditInfo extends Component {
       });
   }
 
-  // Handle text typed in by the user.
+  /**
+   *
+   *
+   * @param {*} event
+   */
   handleChange = event => {
+    
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -63,6 +74,11 @@ export default class EditInfo extends Component {
 
   // Submits the form data to the API
   // And does some cool animation
+  /**
+   *
+   *
+   * @param {*} event
+   */
   handleSubmit = event => {
     event.preventDefault();
     event.target.value = null;
@@ -72,6 +88,7 @@ export default class EditInfo extends Component {
 
     // Stop the form from submitting
     // Get the data from the form state.
+
     const { name, logo, address, description, phoneNumber } = this.state;
 
     // Create form data object

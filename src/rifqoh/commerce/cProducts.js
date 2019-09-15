@@ -19,7 +19,7 @@ class cProducts extends Component {
     deleteLoading: false,
     deleteSuccess: false,
     clicked: false,
-    error: false
+    error: false,
   };
 
   // React auto runs this component when the components
@@ -327,8 +327,8 @@ class cProducts extends Component {
             <div className="modal-content">
               {/* <!-- Modal Header --> */}
               <div className="modal-header">
-                <h4 className="modal-title">Add Product</h4>
-                <button type="button" className="close" data-dismiss="modal">
+                <h4 className="modal-title" >Add Product</h4>
+                <button type="button" className="close" data-dismiss="modal" onClick={this.handleCloseModal}>
                   &times;
                 </button>
               </div>
@@ -347,6 +347,7 @@ class cProducts extends Component {
           className="btn btn-dark btn-lg float-btn navbar-btn mt-2 text-white"
           data-toggle="modal"
           data-target="#myModal"
+          onClick={this.handleOpenModal}
         >
           <i className="fas fa-plus" /> Add Product
         </span>
